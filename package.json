@@ -1,0 +1,38 @@
+{
+  "name": "foodie-recommender",
+  "version": "1.0.0",
+  "description": "A simple food recommendation app that helps users decide what to cook or order based on their preferences",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080",
+    "build": "node build.js",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "food",
+    "recommendation",
+    "recipe",
+    "meal",
+    "cooking",
+    "restaurant",
+    "mobile",
+    "app"
+  ],
+  "author": "Foodie Recommender Team",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/foodie-recommender.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/foodie-recommender/issues"
+  },
+  "homepage": "https://github.com/yourusername/foodie-recommender#readme"
+}
