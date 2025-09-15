@@ -24,23 +24,119 @@
         </header>
 
         <main class="main-content">
-            <div class="preference-section">
-                <h2>What's your mood today?</h2>
+            <!-- Main Menu -->
+            <div id="main-menu" class="main-menu">
+                <h2>What would you like today?</h2>
+                <div class="menu-options">
+                    <button class="menu-option" data-option="single-dish">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Single Dish</h3>
+                        <p>Get one perfect dish recommendation</p>
+                    </button>
+                    <button class="menu-option" data-option="combo-meal">
+                        <i class="fas fa-plate-wheat"></i>
+                        <h3>Combo Meal</h3>
+                        <p>Get roti/rice + curry combination</p>
+                    </button>
+                    <button class="menu-option" data-option="surprise-me">
+                        <i class="fas fa-magic"></i>
+                        <h3>Surprise Me</h3>
+                        <p>Let us choose something amazing</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Single Dish Interface -->
+            <div id="single-dish-section" class="preference-section hidden">
+                <div class="section-header">
+                    <button class="back-btn" onclick="showMainMenu()">
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </button>
+                    <h2>Choose Your Single Dish</h2>
+                </div>
                 
-                <div class="input-group">
-                    <label for="include-input">
-                        <i class="fas fa-heart"></i>
-                        I want something with...
-                    </label>
-                    <input type="text" id="include-input" placeholder="e.g., paneer, chicken, spicy">
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-utensils"></i>
+                            Cuisine Type
+                            <span class="selection-count" id="cuisine-count">(0/3)</span>
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-btn" data-filter="cuisine" data-value="South Indian">South Indian</button>
+                            <button class="filter-btn" data-filter="cuisine" data-value="North Indian">North Indian</button>
+                            <button class="filter-btn" data-filter="cuisine" data-value="Indian">Indian</button>
+                            <button class="filter-btn" data-filter="cuisine" data-value="Chinese">Chinese</button>
+                            <button class="filter-btn" data-filter="cuisine" data-value="Continental">Continental</button>
+                            <button class="filter-btn" data-filter="cuisine" data-value="Street Food">Street Food</button>
+                            <button class="filter-btn" data-filter="cuisine" data-value="Italian">Italian</button>
+                            <button class="filter-btn" data-filter="cuisine" data-value="Mexican">Mexican</button>
+                            <button class="filter-btn" data-filter="cuisine" data-value="Thai">Thai</button>
+                            <button class="filter-btn" data-filter="cuisine" data-value="Japanese">Japanese</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-leaf"></i>
+                            Food Type
+                            <span class="selection-count" id="type-count">(0/3)</span>
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-btn" data-filter="type" data-value="Vegetarian">Vegetarian</button>
+                            <button class="filter-btn" data-filter="type" data-value="Non-Vegetarian">Non-Veg</button>
+                            <button class="filter-btn" data-filter="type" data-value="Egg">Egg</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-fire"></i>
+                            Spice Level
+                            <span class="selection-count" id="spice-count">(0/3)</span>
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-btn" data-filter="spice" data-value="mild">Mild</button>
+                            <button class="filter-btn" data-filter="spice" data-value="medium">Medium</button>
+                            <button class="filter-btn" data-filter="spice" data-value="spicy">Spicy</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-clock"></i>
+                            Meal Time
+                            <span class="selection-count" id="meal-count">(0/3)</span>
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-btn" data-filter="meal" data-value="breakfast">Breakfast</button>
+                            <button class="filter-btn" data-filter="meal" data-value="lunch">Lunch</button>
+                            <button class="filter-btn" data-filter="meal" data-value="dinner">Dinner</button>
+                            <button class="filter-btn" data-filter="meal" data-value="snacks">Snacks</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-heart"></i>
+                            Special Preferences
+                            <span class="selection-count" id="special-count">(0/3)</span>
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-btn" data-filter="special" data-value="healthy">Healthy</button>
+                            <button class="filter-btn" data-filter="special" data-value="comfort">Comfort Food</button>
+                            <button class="filter-btn" data-filter="special" data-value="quick">Quick Bite</button>
+                            <button class="filter-btn" data-filter="special" data-value="traditional">Traditional</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <label for="exclude-input">
-                        <i class="fas fa-times-circle"></i>
-                        But not...
-                    </label>
-                    <input type="text" id="exclude-input" placeholder="e.g., bitter gourd, brinjal, too spicy">
+                <div class="selected-filters">
+                    <h3>Your Preferences:</h3>
+                    <div id="selected-filters-list" class="selected-filters-list">
+                        <span class="no-selection">No filters selected - we'll surprise you!</span>
+                    </div>
                 </div>
 
                 <button id="recommend-btn" class="recommend-btn">
@@ -49,6 +145,100 @@
                 </button>
             </div>
 
+            <!-- Combo Meal Interface -->
+            <div id="combo-meal-section" class="preference-section hidden">
+                <div class="section-header">
+                    <button class="back-btn" onclick="showMainMenu()">
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </button>
+                    <h2>Choose Your Combo Meal</h2>
+                </div>
+                
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-bread-slice"></i>
+                            Roti/Rice Type
+                            <span class="selection-count" id="roti-count">(0/3)</span>
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-btn" data-filter="roti" data-value="Naan">Naan</button>
+                            <button class="filter-btn" data-filter="roti" data-value="Butter Naan">Butter Naan</button>
+                            <button class="filter-btn" data-filter="roti" data-value="Garlic Naan">Garlic Naan</button>
+                            <button class="filter-btn" data-filter="roti" data-value="Bhature">Bhature</button>
+                            <button class="filter-btn" data-filter="roti" data-value="Tandoori Roti">Tandoori Roti</button>
+                            <button class="filter-btn" data-filter="roti" data-value="Jeera Rice">Jeera Rice</button>
+                            <button class="filter-btn" data-filter="roti" data-value="Plain Rice">Plain Rice</button>
+                            <button class="filter-btn" data-filter="roti" data-value="Biryani Rice">Biryani Rice</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-bowl-food"></i>
+                            Curry Type
+                            <span class="selection-count" id="curry-count">(0/3)</span>
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-btn" data-filter="curry" data-value="Chhole">Chhole</button>
+                            <button class="filter-btn" data-filter="curry" data-value="Rajma">Rajma</button>
+                            <button class="filter-btn" data-filter="curry" data-value="Chicken Curry">Chicken Curry</button>
+                            <button class="filter-btn" data-filter="curry" data-value="Egg Curry">Egg Curry</button>
+                            <button class="filter-btn" data-filter="curry" data-value="Paneer Curry">Paneer Curry</button>
+                            <button class="filter-btn" data-filter="curry" data-value="Dal">Dal</button>
+                            <button class="filter-btn" data-filter="curry" data-value="Mutton Curry">Mutton Curry</button>
+                            <button class="filter-btn" data-filter="curry" data-value="Fish Curry">Fish Curry</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-fire"></i>
+                            Spice Level
+                            <span class="selection-count" id="combo-spice-count">(0/3)</span>
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-btn" data-filter="combo-spice" data-value="mild">Mild</button>
+                            <button class="filter-btn" data-filter="combo-spice" data-value="medium">Medium</button>
+                            <button class="filter-btn" data-filter="combo-spice" data-value="spicy">Spicy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="selected-filters">
+                    <h3>Your Combo Preferences:</h3>
+                    <div id="combo-selected-filters-list" class="selected-filters-list">
+                        <span class="no-selection">No filters selected - we'll surprise you!</span>
+                    </div>
+                </div>
+
+                <button id="combo-recommend-btn" class="recommend-btn">
+                    <i class="fas fa-magic"></i>
+                    Get My Combo Recommendation
+                </button>
+            </div>
+
+            <!-- Surprise Me Interface -->
+            <div id="surprise-me-section" class="preference-section hidden">
+                <div class="section-header">
+                    <button class="back-btn" onclick="showMainMenu()">
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </button>
+                    <h2>Surprise Me!</h2>
+                </div>
+                
+                <div class="surprise-options">
+                    <p>We'll surprise you with either a single dish or a combo meal!</p>
+                    <button id="surprise-btn" class="recommend-btn">
+                        <i class="fas fa-magic"></i>
+                        Surprise Me!
+                    </button>
+                </div>
+            </div>
+
+            <!-- Single Dish Result -->
             <div id="result-section" class="result-section hidden">
                 <div class="result-card">
                     <div class="dish-image">
@@ -72,6 +262,47 @@
                     <button id="order-btn" class="primary-btn">
                         <i class="fas fa-shopping-cart"></i>
                         Order This
+                    </button>
+                </div>
+            </div>
+
+            <!-- Combo Meal Result -->
+            <div id="combo-result-section" class="result-section hidden">
+                <div class="combo-result-card">
+                    <h3>Your Perfect Combo Meal</h3>
+                    <div class="combo-items">
+                        <div class="combo-item">
+                            <div class="item-image">
+                                <i class="fas fa-bread-slice"></i>
+                            </div>
+                            <div class="item-info">
+                                <h4 id="roti-name">Roti/Rice</h4>
+                                <p id="roti-description">Description</p>
+                            </div>
+                        </div>
+                        <div class="combo-separator">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="combo-item">
+                            <div class="item-image">
+                                <i class="fas fa-bowl-food"></i>
+                            </div>
+                            <div class="item-info">
+                                <h4 id="curry-name">Curry</h4>
+                                <p id="curry-description">Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="combo-try-again-btn" class="secondary-btn">
+                        <i class="fas fa-redo"></i>
+                        Try Again
+                    </button>
+                    <button id="combo-order-btn" class="primary-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        Order This Combo
                     </button>
                 </div>
             </div>

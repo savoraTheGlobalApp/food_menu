@@ -1,7 +1,31 @@
-// Dish Database - 200+ dishes with various cuisines and ingredients
+// Enhanced Dish Database with comprehensive food items
 const dishDatabase = [
+    // Bengaluru Favorites - South Indian
+    { name: "Masala Dosa", description: "Crispy crepe with spiced potato filling - Bengaluru's favorite breakfast", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "potato", "onion", "spices"], spice: "medium", meal: "breakfast", special: "traditional" },
+    { name: "Idli Sambar", description: "Soft rice cakes with tangy lentil stew", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "vegetables", "tamarind", "spices"], spice: "mild", meal: "breakfast", special: "healthy" },
+    { name: "Vada Sambar", description: "Crispy lentil fritters with spicy sambar", cuisine: "South Indian", type: "Vegetarian", ingredients: ["lentils", "vegetables", "tamarind", "spices", "oil"], spice: "medium", meal: "breakfast", special: "traditional" },
+    { name: "Bisi Bele Bath", description: "Spicy rice and lentil dish - Karnataka's comfort food", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "vegetables", "spices", "tamarind"], spice: "spicy", meal: "lunch", special: "comfort" },
+    { name: "Akki Roti", description: "Rice flour flatbread with vegetables - complete meal", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice flour", "vegetables", "onion", "spices", "oil"], spice: "mild", meal: "breakfast", special: "traditional" },
+    { name: "Rava Idli", description: "Semolina-based steamed cakes - complete breakfast", cuisine: "South Indian", type: "Vegetarian", ingredients: ["semolina", "yogurt", "vegetables", "spices", "oil"], spice: "mild", meal: "breakfast", special: "healthy" },
+    { name: "Pesarattu", description: "Green gram crepe with onions - complete breakfast", cuisine: "South Indian", type: "Vegetarian", ingredients: ["green gram", "rice", "onion", "spices", "oil"], spice: "mild", meal: "breakfast", special: "healthy" },
+    { name: "Uttapam", description: "Thick pancake with vegetables - complete meal", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "vegetables", "onion", "spices"], spice: "mild", meal: "breakfast", special: "traditional" },
+    
+    // Bengaluru Street Food
+    { name: "Masala Puri", description: "Spicy puffed rice with tangy chutney - Bengaluru street favorite", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puffed rice", "onion", "tomato", "chutney", "spices"], spice: "spicy", meal: "snacks", special: "quick" },
+    { name: "Gobi Manchurian", description: "Crispy cauliflower in spicy sauce - IT crowd favorite", cuisine: "Street Food", type: "Vegetarian", ingredients: ["cauliflower", "flour", "soy sauce", "vinegar", "spices"], spice: "spicy", meal: "snacks", special: "quick" },
+    { name: "Pani Puri", description: "Crispy shells with spiced water - perfect evening snack", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puris", "spiced water", "tamarind", "chutney", "potato"], spice: "spicy", meal: "snacks", special: "quick" },
+    { name: "Dahi Puri", description: "Crispy shells with yogurt and chutney", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puris", "yogurt", "chutney", "spices", "onion"], spice: "mild", meal: "snacks", special: "quick" },
+    { name: "Bhel Puri", description: "Mumbai-style puffed rice with vegetables", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puffed rice", "vegetables", "chutney", "spices", "onion"], spice: "medium", meal: "snacks", special: "quick" },
+    
+    // Bengaluru IT Hub Favorites
+    { name: "Chicken Biryani", description: "Aromatic basmati rice with spiced chicken - perfect for lunch", cuisine: "North Indian", type: "Non-Vegetarian", ingredients: ["chicken", "rice", "yogurt", "spices", "saffron"], spice: "medium", meal: "lunch", special: "comfort" },
+    { name: "Butter Chicken", description: "Creamy tomato-based chicken curry - office lunch favorite", cuisine: "North Indian", type: "Non-Vegetarian", ingredients: ["chicken", "tomato", "cream", "butter", "spices"], spice: "mild", meal: "lunch", special: "comfort" },
+    { name: "Chicken Fried Rice", description: "Quick and satisfying stir-fried rice with chicken", cuisine: "Chinese", type: "Non-Vegetarian", ingredients: ["chicken", "rice", "vegetables", "soy sauce", "oil"], spice: "mild", meal: "lunch", special: "quick" },
+    { name: "Hakka Noodles", description: "Stir-fried noodles with vegetables - perfect for dinner", cuisine: "Chinese", type: "Vegetarian", ingredients: ["noodles", "vegetables", "soy sauce", "oil", "garlic"], spice: "medium", meal: "dinner", special: "quick" },
+    { name: "Margherita Pizza", description: "Classic pizza with tomato, mozzarella, and basil", cuisine: "Continental", type: "Vegetarian", ingredients: ["tomato", "mozzarella", "basil", "dough", "olive oil"], spice: "mild", meal: "dinner", special: "comfort" },
+    
     // Indian Vegetarian Dishes
-    { name: "Paneer Butter Masala", description: "Creamy tomato-based curry with soft paneer cubes", cuisine: "Indian", type: "Vegetarian", ingredients: ["paneer", "tomato", "cream", "butter", "spices"] },
+    { name: "Paneer Butter Masala", description: "Creamy tomato-based curry with soft paneer cubes", cuisine: "North Indian", type: "Vegetarian", ingredients: ["paneer", "tomato", "cream", "butter", "spices"], spice: "mild", meal: "lunch", special: "comfort" },
     { name: "Palak Paneer", description: "Fresh spinach curry with cottage cheese", cuisine: "Indian", type: "Vegetarian", ingredients: ["paneer", "spinach", "onion", "garlic", "spices"] },
     { name: "Chana Masala", description: "Spicy chickpea curry with aromatic spices", cuisine: "Indian", type: "Vegetarian", ingredients: ["chickpeas", "onion", "tomato", "ginger", "spices"] },
     { name: "Dal Makhani", description: "Rich black lentil curry with cream and butter", cuisine: "Indian", type: "Vegetarian", ingredients: ["black lentils", "kidney beans", "cream", "butter", "spices"] },
@@ -96,41 +120,32 @@ const dishDatabase = [
     { name: "Chicken Wrap", description: "Chicken and vegetables wrapped in tortilla", cuisine: "Continental", type: "Non-Vegetarian", ingredients: ["chicken", "tortilla", "vegetables", "sauce"] },
     { name: "Vegetable Wrap", description: "Fresh vegetables wrapped in tortilla", cuisine: "Continental", type: "Vegetarian", ingredients: ["vegetables", "tortilla", "hummus", "lettuce"] },
     
-    // South Indian Dishes
-    { name: "Idli", description: "Steamed rice cakes with coconut chutney", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "coconut", "curry leaves", "mustard"] },
-    { name: "Dosa", description: "Crispy fermented crepe with sambar", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "potato", "onion", "spices"] },
-    { name: "Vada", description: "Deep-fried lentil fritters", cuisine: "South Indian", type: "Vegetarian", ingredients: ["lentils", "onion", "curry leaves", "spices", "oil"] },
-    { name: "Sambar", description: "Lentil stew with vegetables and tamarind", cuisine: "South Indian", type: "Vegetarian", ingredients: ["lentils", "vegetables", "tamarind", "spices", "curry leaves"] },
-    { name: "Rasam", description: "Spicy and tangy soup with tamarind", cuisine: "South Indian", type: "Vegetarian", ingredients: ["tamarind", "tomato", "spices", "curry leaves", "garlic"] },
-    { name: "Coconut Chutney", description: "Fresh coconut with green chilies", cuisine: "South Indian", type: "Vegetarian", ingredients: ["coconut", "green chili", "curry leaves", "mustard", "ginger"] },
-    { name: "Tomato Chutney", description: "Spicy tomato relish", cuisine: "South Indian", type: "Vegetarian", ingredients: ["tomato", "onion", "garlic", "spices", "oil"] },
-    { name: "Upma", description: "Semolina porridge with vegetables", cuisine: "South Indian", type: "Vegetarian", ingredients: ["semolina", "vegetables", "onion", "curry leaves", "mustard"] },
-    { name: "Pongal", description: "Rice and lentil porridge", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "pepper", "cumin", "ginger"] },
-    { name: "Bisi Bele Bath", description: "Spicy rice and lentil dish", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "vegetables", "spices", "tamarind"] },
+    // South Indian Dishes - Complete Single Dishes Only
+    { name: "Upma", description: "Semolina porridge with vegetables - complete breakfast", cuisine: "South Indian", type: "Vegetarian", ingredients: ["semolina", "vegetables", "onion", "curry leaves", "mustard"], spice: "mild", meal: "breakfast", special: "healthy" },
+    { name: "Pongal", description: "Rice and lentil porridge - complete meal", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "pepper", "cumin", "ginger"], spice: "mild", meal: "breakfast", special: "comfort" },
+    { name: "Ven Pongal", description: "Spiced rice and lentil porridge - complete meal", cuisine: "South Indian", type: "Vegetarian", ingredients: ["rice", "lentils", "pepper", "cumin", "ginger", "ghee"], spice: "mild", meal: "breakfast", special: "comfort" },
+    { name: "Kesari Bath", description: "Sweet semolina dessert - complete sweet dish", cuisine: "South Indian", type: "Vegetarian", ingredients: ["semolina", "sugar", "ghee", "saffron", "nuts"], spice: "mild", meal: "snacks", special: "comfort" },
+    { name: "Rava Kesari", description: "Sweet semolina pudding with nuts - complete dessert", cuisine: "South Indian", type: "Vegetarian", ingredients: ["semolina", "sugar", "ghee", "saffron", "cashews"], spice: "mild", meal: "snacks", special: "comfort" },
     
-    // North Indian Dishes
-    { name: "Naan", description: "Soft leavened bread cooked in tandoor", cuisine: "North Indian", type: "Vegetarian", ingredients: ["flour", "yogurt", "yeast", "butter", "garlic"] },
-    { name: "Roti", description: "Whole wheat flatbread", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "water", "oil"] },
-    { name: "Paratha", description: "Layered flatbread with ghee", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "ghee", "oil", "spices"] },
-    { name: "Aloo Paratha", description: "Flatbread stuffed with spiced potatoes", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "potato", "spices", "ghee", "onion"] },
-    { name: "Gobi Paratha", description: "Flatbread stuffed with spiced cauliflower", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "cauliflower", "spices", "ghee", "onion"] },
-    { name: "Paneer Paratha", description: "Flatbread stuffed with spiced paneer", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "paneer", "spices", "ghee", "onion"] },
-    { name: "Kulcha", description: "Leavened bread with toppings", cuisine: "North Indian", type: "Vegetarian", ingredients: ["flour", "yogurt", "yeast", "onion", "spices"] },
-    { name: "Tandoori Roti", description: "Whole wheat bread cooked in tandoor", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "water", "oil"] },
-    { name: "Missi Roti", description: "Spiced flatbread with gram flour", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "gram flour", "spices", "onion", "oil"] },
-    { name: "Lachha Paratha", description: "Layered crispy flatbread", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "ghee", "oil"] },
+    // North Indian Dishes - Complete Single Dishes Only
+    { name: "Aloo Paratha", description: "Flatbread stuffed with spiced potatoes - complete meal", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "potato", "spices", "ghee", "onion"], spice: "medium", meal: "breakfast", special: "comfort" },
+    { name: "Gobi Paratha", description: "Flatbread stuffed with spiced cauliflower - complete meal", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "cauliflower", "spices", "ghee", "onion"], spice: "medium", meal: "breakfast", special: "comfort" },
+    { name: "Paneer Paratha", description: "Flatbread stuffed with spiced paneer - complete meal", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "paneer", "spices", "ghee", "onion"], spice: "medium", meal: "breakfast", special: "comfort" },
+    { name: "Missi Roti", description: "Spiced flatbread with gram flour - complete meal", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "gram flour", "spices", "onion", "oil"], spice: "medium", meal: "breakfast", special: "traditional" },
+    { name: "Lachha Paratha", description: "Layered crispy flatbread - complete meal", cuisine: "North Indian", type: "Vegetarian", ingredients: ["wheat flour", "ghee", "oil"], spice: "mild", meal: "breakfast", special: "traditional" },
+    { name: "Aloo Tikki", description: "Spiced potato patties - complete snack", cuisine: "North Indian", type: "Vegetarian", ingredients: ["potato", "spices", "oil", "onion", "garlic"], spice: "medium", meal: "snacks", special: "quick" },
+    { name: "Samosa", description: "Crispy fried pastry filled with spiced potatoes - complete snack", cuisine: "North Indian", type: "Vegetarian", ingredients: ["potato", "flour", "spices", "oil", "onion"], spice: "medium", meal: "snacks", special: "quick" },
+    { name: "Kachori", description: "Deep-fried pastry with spiced filling - complete snack", cuisine: "North Indian", type: "Vegetarian", ingredients: ["flour", "spices", "oil", "onion", "garlic"], spice: "medium", meal: "snacks", special: "quick" },
     
-    // Street Food
-    { name: "Pav Bhaji", description: "Spicy vegetable curry with buttered bread", cuisine: "Street Food", type: "Vegetarian", ingredients: ["vegetables", "butter", "spices", "bread", "onion"] },
-    { name: "Vada Pav", description: "Spicy potato fritter in bread", cuisine: "Street Food", type: "Vegetarian", ingredients: ["potato", "flour", "spices", "bread", "chutney"] },
-    { name: "Bhel Puri", description: "Puffed rice with vegetables and chutney", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puffed rice", "vegetables", "chutney", "spices", "onion"] },
-    { name: "Pani Puri", description: "Crispy shells with spiced water", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puris", "spiced water", "tamarind", "chutney", "potato"] },
-    { name: "Dahi Puri", description: "Crispy shells with yogurt and chutney", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puris", "yogurt", "chutney", "spices", "onion"] },
-    { name: "Chole Bhature", description: "Spicy chickpeas with fried bread", cuisine: "Street Food", type: "Vegetarian", ingredients: ["chickpeas", "flour", "spices", "oil", "onion"] },
-    { name: "Aloo Tikki", description: "Spiced potato patties with chutney", cuisine: "Street Food", type: "Vegetarian", ingredients: ["potato", "spices", "oil", "chutney", "onion"] },
-    { name: "Kachori", description: "Deep-fried pastry with spiced filling", cuisine: "Street Food", type: "Vegetarian", ingredients: ["flour", "spices", "oil", "onion", "garlic"] },
-    { name: "Jalebi", description: "Sweet deep-fried spirals in syrup", cuisine: "Street Food", type: "Vegetarian", ingredients: ["flour", "sugar", "oil", "saffron", "cardamom"] },
-    { name: "Gulab Jamun", description: "Milk-based dumplings in sugar syrup", cuisine: "Street Food", type: "Vegetarian", ingredients: ["milk powder", "flour", "sugar", "oil", "cardamom"] },
+    // Street Food - Complete Single Dishes Only
+    { name: "Pav Bhaji", description: "Spicy vegetable curry with buttered bread - complete meal", cuisine: "Street Food", type: "Vegetarian", ingredients: ["vegetables", "butter", "spices", "bread", "onion"], spice: "spicy", meal: "lunch", special: "comfort" },
+    { name: "Vada Pav", description: "Spicy potato fritter in bread - complete snack", cuisine: "Street Food", type: "Vegetarian", ingredients: ["potato", "flour", "spices", "bread", "chutney"], spice: "spicy", meal: "snacks", special: "quick" },
+    { name: "Bhel Puri", description: "Puffed rice with vegetables and chutney - complete snack", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puffed rice", "vegetables", "chutney", "spices", "onion"], spice: "medium", meal: "snacks", special: "quick" },
+    { name: "Pani Puri", description: "Crispy shells with spiced water - complete snack", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puris", "spiced water", "tamarind", "chutney", "potato"], spice: "spicy", meal: "snacks", special: "quick" },
+    { name: "Dahi Puri", description: "Crispy shells with yogurt and chutney - complete snack", cuisine: "Street Food", type: "Vegetarian", ingredients: ["puris", "yogurt", "chutney", "spices", "onion"], spice: "mild", meal: "snacks", special: "quick" },
+    { name: "Chole Bhature", description: "Spicy chickpeas with fried bread - complete meal", cuisine: "Street Food", type: "Vegetarian", ingredients: ["chickpeas", "flour", "spices", "oil", "onion"], spice: "medium", meal: "lunch", special: "comfort" },
+    { name: "Jalebi", description: "Sweet deep-fried spirals in syrup - complete dessert", cuisine: "Street Food", type: "Vegetarian", ingredients: ["flour", "sugar", "oil", "saffron", "cardamom"], spice: "mild", meal: "snacks", special: "comfort" },
+    { name: "Gulab Jamun", description: "Milk-based dumplings in sugar syrup - complete dessert", cuisine: "Street Food", type: "Vegetarian", ingredients: ["milk powder", "flour", "sugar", "oil", "cardamom"], spice: "mild", meal: "snacks", special: "comfort" },
     
     // Desserts
     { name: "Ice Cream", description: "Creamy frozen dessert in various flavors", cuisine: "Dessert", type: "Vegetarian", ingredients: ["cream", "milk", "sugar", "vanilla", "flavoring"] },
@@ -157,51 +172,183 @@ const dishDatabase = [
     { name: "Energy Drink", description: "Caffeinated beverage", cuisine: "Beverage", type: "Vegetarian", ingredients: ["caffeine", "sugar", "vitamins", "flavoring"] }
 ];
 
+// Combo Meal Database
+const comboDatabase = {
+    roti: [
+        { name: "Naan", description: "Soft leavened bread cooked in tandoor", type: "bread", spice: "mild" },
+        { name: "Butter Naan", description: "Soft naan brushed with butter", type: "bread", spice: "mild" },
+        { name: "Garlic Naan", description: "Naan topped with garlic and herbs", type: "bread", spice: "mild" },
+        { name: "Bhature", description: "Deep-fried leavened bread", type: "bread", spice: "mild" },
+        { name: "Tandoori Roti", description: "Whole wheat bread cooked in tandoor", type: "bread", spice: "mild" },
+        { name: "Jeera Rice", description: "Basmati rice tempered with cumin seeds", type: "rice", spice: "mild" },
+        { name: "Plain Rice", description: "Steamed basmati rice", type: "rice", spice: "mild" },
+        { name: "Biryani Rice", description: "Aromatic basmati rice with spices", type: "rice", spice: "medium" }
+    ],
+    curry: [
+        { name: "Chhole", description: "Spicy chickpea curry with onions and tomatoes", type: "vegetarian", spice: "medium" },
+        { name: "Rajma", description: "Red kidney bean curry in tomato gravy", type: "vegetarian", spice: "medium" },
+        { name: "Chicken Curry", description: "Tender chicken in rich tomato-based gravy", type: "non-vegetarian", spice: "medium" },
+        { name: "Egg Curry", description: "Hard-boiled eggs in spicy tomato curry", type: "egg", spice: "medium" },
+        { name: "Paneer Curry", description: "Cottage cheese in creamy tomato gravy", type: "vegetarian", spice: "mild" },
+        { name: "Dal", description: "Lentil curry with aromatic spices", type: "vegetarian", spice: "mild" },
+        { name: "Mutton Curry", description: "Tender mutton in spicy curry", type: "non-vegetarian", spice: "spicy" },
+        { name: "Fish Curry", description: "Fish cooked in tangy coconut curry", type: "non-vegetarian", spice: "medium" }
+    ]
+};
+
 // DOM Elements
-const includeInput = document.getElementById('include-input');
-const excludeInput = document.getElementById('exclude-input');
+const mainMenu = document.getElementById('main-menu');
+const singleDishSection = document.getElementById('single-dish-section');
+const comboMealSection = document.getElementById('combo-meal-section');
+const surpriseMeSection = document.getElementById('surprise-me-section');
+
+// Single Dish Elements
 const recommendBtn = document.getElementById('recommend-btn');
 const resultSection = document.getElementById('result-section');
-const noResults = document.getElementById('no-results');
 const dishName = document.getElementById('dish-name');
 const dishDescription = document.getElementById('dish-description');
 const dishCuisine = document.getElementById('dish-cuisine');
 const dishType = document.getElementById('dish-type');
 const tryAgainBtn = document.getElementById('try-again-btn');
 const orderBtn = document.getElementById('order-btn');
+const selectedFiltersList = document.getElementById('selected-filters-list');
+
+// Combo Meal Elements
+const comboRecommendBtn = document.getElementById('combo-recommend-btn');
+const comboResultSection = document.getElementById('combo-result-section');
+const rotiName = document.getElementById('roti-name');
+const rotiDescription = document.getElementById('roti-description');
+const curryName = document.getElementById('curry-name');
+const curryDescription = document.getElementById('curry-description');
+const comboTryAgainBtn = document.getElementById('combo-try-again-btn');
+const comboOrderBtn = document.getElementById('combo-order-btn');
+const comboSelectedFiltersList = document.getElementById('combo-selected-filters-list');
+
+// Surprise Me Elements
+const surpriseBtn = document.getElementById('surprise-btn');
+
+// Common Elements
+const noResults = document.getElementById('no-results');
 const clearPreferencesBtn = document.getElementById('clear-preferences');
 
+// Filter state
+let selectedFilters = {
+    cuisine: [],
+    type: [],
+    spice: [],
+    meal: [],
+    special: []
+};
+
+let selectedComboFilters = {
+    roti: [],
+    curry: [],
+    spice: []
+};
+
+let currentMode = 'main'; // 'main', 'single-dish', 'combo-meal', 'surprise-me'
+
 // Event Listeners
+// Main menu navigation
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.menu-option')) {
+        const option = e.target.closest('.menu-option').dataset.option;
+        showSection(option);
+    }
+});
+
+// Single dish functionality
 recommendBtn.addEventListener('click', getRecommendation);
 tryAgainBtn.addEventListener('click', tryAgain);
-clearPreferencesBtn.addEventListener('click', clearPreferences);
 orderBtn.addEventListener('click', orderDish);
 
-// Allow Enter key to trigger recommendation
-includeInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        getRecommendation();
+// Combo meal functionality
+comboRecommendBtn.addEventListener('click', getComboRecommendation);
+comboTryAgainBtn.addEventListener('click', tryAgain);
+comboOrderBtn.addEventListener('click', orderCombo);
+
+// Surprise me functionality
+surpriseBtn.addEventListener('click', surpriseMe);
+
+// Clear preferences
+if (clearPreferencesBtn) {
+    clearPreferencesBtn.addEventListener('click', clearPreferences);
+}
+
+// Filter button event listeners
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('filter-btn')) {
+        toggleFilter(e.target);
+    }
+    
+    if (e.target.classList.contains('remove-btn')) {
+        removeFilter(e.target);
     }
 });
 
-excludeInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        getRecommendation();
+// Navigation Functions
+function showSection(section) {
+    // Hide all sections
+    mainMenu.classList.add('hidden');
+    singleDishSection.classList.add('hidden');
+    comboMealSection.classList.add('hidden');
+    surpriseMeSection.classList.add('hidden');
+    resultSection.classList.add('hidden');
+    comboResultSection.classList.add('hidden');
+    noResults.classList.add('hidden');
+    
+    // Show selected section
+    currentMode = section;
+    switch(section) {
+        case 'single-dish':
+            singleDishSection.classList.remove('hidden');
+            break;
+        case 'combo-meal':
+            comboMealSection.classList.remove('hidden');
+            break;
+        case 'surprise-me':
+            surpriseMeSection.classList.remove('hidden');
+            break;
+        default:
+            mainMenu.classList.remove('hidden');
     }
-});
+}
+
+function showMainMenu() {
+    showSection('main');
+}
+
+// Surprise Me Function
+function surpriseMe() {
+    surpriseBtn.innerHTML = '<div class="loading"></div> Surprising you...';
+    surpriseBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Randomly choose between single dish or combo meal
+        const isCombo = Math.random() < 0.5;
+        
+        if (isCombo) {
+            getComboRecommendation(true);
+        } else {
+            getRecommendation(true);
+        }
+        
+        surpriseBtn.innerHTML = '<i class="fas fa-magic"></i> Surprise Me!';
+        surpriseBtn.disabled = false;
+    }, 1000);
+}
 
 // Main recommendation function
-function getRecommendation() {
-    const includeText = includeInput.value.trim().toLowerCase();
-    const excludeText = excludeInput.value.trim().toLowerCase();
-    
-    // Show loading state
-    recommendBtn.innerHTML = '<div class="loading"></div> Getting Recommendation...';
-    recommendBtn.disabled = true;
+function getRecommendation(isSurprise = false) {
+    if (!isSurprise) {
+        // Show loading state
+        recommendBtn.innerHTML = '<div class="loading"></div> Getting Recommendation...';
+        recommendBtn.disabled = true;
+    }
     
     // Simulate loading delay for better UX
     setTimeout(() => {
-        const recommendation = findRecommendation(includeText, excludeText);
+        const recommendation = findRecommendation();
         
         if (recommendation) {
             displayRecommendation(recommendation);
@@ -210,54 +357,293 @@ function getRecommendation() {
         }
         
         // Reset button
-        recommendBtn.innerHTML = '<i class="fas fa-magic"></i> Get My Recommendation';
-        recommendBtn.disabled = false;
+        if (!isSurprise) {
+            recommendBtn.innerHTML = '<i class="fas fa-magic"></i> Get My Recommendation';
+            recommendBtn.disabled = false;
+        }
     }, 1000);
 }
 
-// Find recommendation based on preferences
-function findRecommendation(includeText, excludeText) {
+// Combo recommendation function
+function getComboRecommendation(isSurprise = false) {
+    if (!isSurprise) {
+        // Show loading state
+        comboRecommendBtn.innerHTML = '<div class="loading"></div> Getting Combo...';
+        comboRecommendBtn.disabled = true;
+    }
+    
+    setTimeout(() => {
+        const comboRecommendation = findComboRecommendation();
+        
+        if (comboRecommendation) {
+            displayComboRecommendation(comboRecommendation);
+        } else {
+            showNoResults();
+        }
+        
+        // Reset button
+        if (!isSurprise) {
+            comboRecommendBtn.innerHTML = '<i class="fas fa-magic"></i> Get My Combo Recommendation';
+            comboRecommendBtn.disabled = false;
+        }
+    }, 1000);
+}
+
+// Find recommendation based on selected filters
+function findRecommendation() {
     let matchingDishes = [...dishDatabase];
+    let fallbackDishes = [...dishDatabase];
     
-    // Filter by include preferences
-    if (includeText) {
-        const includeKeywords = includeText.split(',').map(keyword => keyword.trim());
-        matchingDishes = matchingDishes.filter(dish => {
-            return includeKeywords.some(keyword => 
-                dish.name.toLowerCase().includes(keyword) ||
-                dish.ingredients.some(ingredient => ingredient.toLowerCase().includes(keyword)) ||
-                dish.cuisine.toLowerCase().includes(keyword) ||
-                dish.type.toLowerCase().includes(keyword)
-            );
-        });
+    console.log('Selected filters:', selectedFilters);
+    console.log('Total dishes before filtering:', matchingDishes.length);
+    
+    // Filter by cuisine
+    if (selectedFilters.cuisine.length > 0) {
+        console.log('Filtering by cuisine:', selectedFilters.cuisine);
+        const cuisineMatches = matchingDishes.filter(dish => 
+            selectedFilters.cuisine.some(cuisine => 
+                dish.cuisine.toLowerCase() === cuisine.toLowerCase()
+            )
+        );
+        if (cuisineMatches.length > 0) {
+            matchingDishes = cuisineMatches;
+            fallbackDishes = cuisineMatches;
+        }
+        console.log('Dishes after cuisine filter:', matchingDishes.length);
+        console.log('Matching dishes:', matchingDishes.map(d => d.name));
     }
     
-    // Filter by exclude preferences
-    if (excludeText) {
-        const excludeKeywords = excludeText.split(',').map(keyword => keyword.trim());
-        matchingDishes = matchingDishes.filter(dish => {
-            return !excludeKeywords.some(keyword => 
-                dish.name.toLowerCase().includes(keyword) ||
-                dish.ingredients.some(ingredient => ingredient.toLowerCase().includes(keyword)) ||
-                dish.cuisine.toLowerCase().includes(keyword) ||
-                dish.type.toLowerCase().includes(keyword)
-            );
-        });
+    // Filter by food type
+    if (selectedFilters.type.length > 0) {
+        const typeMatches = matchingDishes.filter(dish => 
+            selectedFilters.type.some(type => 
+                dish.type.toLowerCase() === type.toLowerCase()
+            )
+        );
+        if (typeMatches.length > 0) {
+            matchingDishes = typeMatches;
+        }
     }
     
-    // If no specific preferences, return random dish
-    if (!includeText && !excludeText) {
+    // Filter by spice level
+    if (selectedFilters.spice.length > 0) {
+        const spiceMatches = matchingDishes.filter(dish => 
+            selectedFilters.spice.some(spice => 
+                dish.spice && dish.spice.toLowerCase() === spice.toLowerCase()
+            )
+        );
+        if (spiceMatches.length > 0) {
+            matchingDishes = spiceMatches;
+        }
+    }
+    
+    // Filter by meal time
+    if (selectedFilters.meal.length > 0) {
+        const mealMatches = matchingDishes.filter(dish => 
+            selectedFilters.meal.some(meal => 
+                dish.meal && dish.meal.toLowerCase() === meal.toLowerCase()
+            )
+        );
+        if (mealMatches.length > 0) {
+            matchingDishes = mealMatches;
+        }
+    }
+    
+    // Filter by special preferences
+    if (selectedFilters.special.length > 0) {
+        const specialMatches = matchingDishes.filter(dish => 
+            selectedFilters.special.some(special => 
+                dish.special && dish.special.toLowerCase() === special.toLowerCase()
+            )
+        );
+        if (specialMatches.length > 0) {
+            matchingDishes = specialMatches;
+        }
+    }
+    
+    // If no filters selected, return random dish
+    if (Object.values(selectedFilters).every(filter => filter.length === 0)) {
         matchingDishes = dishDatabase;
     }
     
-    // Return random dish from matching dishes
+    // Return random dish from matching dishes, or fallback to cuisine matches if no other matches
     if (matchingDishes.length > 0) {
         const randomIndex = Math.floor(Math.random() * matchingDishes.length);
         return matchingDishes[randomIndex];
+    } else if (fallbackDishes.length > 0) {
+        // If no exact matches but we have cuisine matches, use those
+        const randomIndex = Math.floor(Math.random() * fallbackDishes.length);
+        return fallbackDishes[randomIndex];
     }
     
     return null;
 }
+
+// Find combo recommendation based on selected filters
+function findComboRecommendation() {
+    let availableRoti = [...comboDatabase.roti];
+    let availableCurry = [...comboDatabase.curry];
+    let fallbackRoti = [...comboDatabase.roti];
+    let fallbackCurry = [...comboDatabase.curry];
+    
+    console.log('Selected combo filters:', selectedComboFilters);
+    
+    // Filter roti based on selections
+    if (selectedComboFilters.roti.length > 0) {
+        const rotiMatches = availableRoti.filter(roti => 
+            selectedComboFilters.roti.some(selected => 
+                roti.name.toLowerCase() === selected.toLowerCase()
+            )
+        );
+        if (rotiMatches.length > 0) {
+            availableRoti = rotiMatches;
+            fallbackRoti = rotiMatches;
+        }
+    }
+    
+    // Filter curry based on selections
+    if (selectedComboFilters.curry.length > 0) {
+        const curryMatches = availableCurry.filter(curry => 
+            selectedComboFilters.curry.some(selected => 
+                curry.name.toLowerCase() === selected.toLowerCase()
+            )
+        );
+        if (curryMatches.length > 0) {
+            availableCurry = curryMatches;
+            fallbackCurry = curryMatches;
+        }
+    }
+    
+    // Filter by spice level
+    if (selectedComboFilters.spice.length > 0) {
+        const spiceRotiMatches = availableRoti.filter(roti => 
+            selectedComboFilters.spice.includes(roti.spice)
+        );
+        const spiceCurryMatches = availableCurry.filter(curry => 
+            selectedComboFilters.spice.includes(curry.spice)
+        );
+        
+        if (spiceRotiMatches.length > 0) {
+            availableRoti = spiceRotiMatches;
+        }
+        if (spiceCurryMatches.length > 0) {
+            availableCurry = spiceCurryMatches;
+        }
+    }
+    
+    // If no filters selected, use all items
+    if (Object.values(selectedComboFilters).every(filter => filter.length === 0)) {
+        availableRoti = [...comboDatabase.roti];
+        availableCurry = [...comboDatabase.curry];
+    }
+    
+    // Return random combination
+    if (availableRoti.length > 0 && availableCurry.length > 0) {
+        const randomRoti = availableRoti[Math.floor(Math.random() * availableRoti.length)];
+        const randomCurry = availableCurry[Math.floor(Math.random() * availableCurry.length)];
+        
+        return {
+            roti: randomRoti,
+            curry: randomCurry
+        };
+    } else if (fallbackRoti.length > 0 && fallbackCurry.length > 0) {
+        // If no exact matches but we have some matches, use those
+        const randomRoti = fallbackRoti[Math.floor(Math.random() * fallbackRoti.length)];
+        const randomCurry = fallbackCurry[Math.floor(Math.random() * fallbackCurry.length)];
+        
+        return {
+            roti: randomRoti,
+            curry: randomCurry
+        };
+    }
+    
+    return null;
+}
+
+// Toggle filter selection (max 3 per category)
+function toggleFilter(button) {
+    const filterType = button.dataset.filter;
+    const filterValue = button.dataset.value;
+    
+    // Determine which filter object to use based on current mode
+    const currentFilters = (currentMode === 'combo-meal') ? selectedComboFilters : selectedFilters;
+    const currentDisplayList = (currentMode === 'combo-meal') ? comboSelectedFiltersList : selectedFiltersList;
+    
+    if (currentFilters[filterType].includes(filterValue)) {
+        // Remove filter
+        currentFilters[filterType] = currentFilters[filterType].filter(f => f !== filterValue);
+        button.classList.remove('active');
+    } else {
+        // Check if we can add more filters (max 3 per category)
+        if (currentFilters[filterType].length < 3) {
+            currentFilters[filterType].push(filterValue);
+            button.classList.add('active');
+        } else {
+            // Show limit reached message
+            showLimitMessage(filterType);
+            return;
+        }
+    }
+    
+    updateSelectedFiltersDisplay(currentFilters, currentDisplayList);
+    updateFilterButtonStates(currentFilters);
+}
+
+// Show limit reached message
+function showLimitMessage(filterType) {
+    const categoryNames = {
+        'cuisine': 'Cuisine Type',
+        'type': 'Food Type',
+        'spice': 'Spice Level',
+        'meal': 'Meal Time',
+        'special': 'Special Preferences'
+    };
+    
+    const message = document.createElement('div');
+    message.className = 'limit-message';
+    message.textContent = `You can select up to 3 ${categoryNames[filterType].toLowerCase()} options`;
+    
+    // Remove any existing limit messages
+    document.querySelectorAll('.limit-message').forEach(msg => msg.remove());
+    
+    // Add message to the filter group
+    const filterGroup = document.querySelector(`[data-filter="${filterType}"]`).closest('.filter-group');
+    filterGroup.appendChild(message);
+    
+    // Remove message after 3 seconds
+    setTimeout(() => {
+        message.remove();
+    }, 3000);
+}
+
+
+// Remove filter from selected filters display
+function removeFilter(button) {
+    const filterText = button.parentElement.textContent.trim();
+    const filterValue = filterText.replace('×', '').trim();
+    
+    // Determine which filter object to use based on current mode
+    const currentFilters = (currentMode === 'combo-meal') ? selectedComboFilters : selectedFilters;
+    const currentDisplayList = (currentMode === 'combo-meal') ? comboSelectedFiltersList : selectedFiltersList;
+    
+    // Find and remove from current filters
+    Object.keys(currentFilters).forEach(filterType => {
+        if (currentFilters[filterType].includes(filterValue)) {
+            currentFilters[filterType] = currentFilters[filterType].filter(f => f !== filterValue);
+        }
+    });
+    
+    // Update button states
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.value === filterValue) {
+            btn.classList.remove('active');
+        }
+    });
+    
+    updateSelectedFiltersDisplay(currentFilters, currentDisplayList);
+    updateFilterButtonStates(currentFilters);
+}
+
 
 // Display the recommendation
 function displayRecommendation(dish) {
@@ -268,15 +654,33 @@ function displayRecommendation(dish) {
     
     // Hide no results and show result
     noResults.classList.add('hidden');
+    comboResultSection.classList.add('hidden');
     resultSection.classList.remove('hidden');
     
     // Scroll to result
     resultSection.scrollIntoView({ behavior: 'smooth' });
 }
 
+// Display combo recommendation
+function displayComboRecommendation(combo) {
+    rotiName.textContent = combo.roti.name;
+    rotiDescription.textContent = combo.roti.description;
+    curryName.textContent = combo.curry.name;
+    curryDescription.textContent = combo.curry.description;
+    
+    // Hide no results and show result
+    noResults.classList.add('hidden');
+    resultSection.classList.add('hidden');
+    comboResultSection.classList.remove('hidden');
+    
+    // Scroll to result
+    comboResultSection.scrollIntoView({ behavior: 'smooth' });
+}
+
 // Show no results message
 function showNoResults() {
     resultSection.classList.add('hidden');
+    comboResultSection.classList.add('hidden');
     noResults.classList.remove('hidden');
     
     // Scroll to no results
@@ -286,23 +690,46 @@ function showNoResults() {
 // Try again function
 function tryAgain() {
     resultSection.classList.add('hidden');
+    comboResultSection.classList.add('hidden');
     noResults.classList.add('hidden');
     
-    // Clear inputs
-    includeInput.value = '';
-    excludeInput.value = '';
-    
-    // Focus on include input
-    includeInput.focus();
+    // Keep current filters but hide results
+    // User can modify filters and try again
 }
 
 // Clear preferences function
 function clearPreferences() {
-    includeInput.value = '';
-    excludeInput.value = '';
+    // Reset all filters
+    selectedFilters = {
+        cuisine: [],
+        type: [],
+        spice: [],
+        meal: [],
+        special: []
+    };
+    
+    selectedComboFilters = {
+        roti: [],
+        curry: [],
+        spice: []
+    };
+    
+    // Remove active states from all filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'disabled');
+        btn.disabled = false;
+    });
+    
+    // Update display and button states
+    updateSelectedFiltersDisplay();
+    updateFilterButtonStates();
+    updateSelectedFiltersDisplay(selectedComboFilters, comboSelectedFiltersList);
+    updateFilterButtonStates(selectedComboFilters);
+    
+    // Hide results
     resultSection.classList.add('hidden');
+    comboResultSection.classList.add('hidden');
     noResults.classList.add('hidden');
-    includeInput.focus();
 }
 
 // Order dish function (placeholder for future integration)
@@ -316,18 +743,76 @@ function orderDish() {
     console.log(`User wants to order: ${dishName}`);
 }
 
+// Order combo function (placeholder for future integration)
+function orderCombo() {
+    const rotiName = document.getElementById('roti-name').textContent;
+    const curryName = document.getElementById('curry-name').textContent;
+    
+    // This would integrate with food delivery platforms
+    alert(`Ordering ${rotiName} + ${curryName} combo...\n\nThis feature will integrate with food delivery platforms like Swiggy, Zomato, etc.`);
+    
+    // For now, just show a message
+    console.log(`User wants to order combo: ${rotiName} + ${curryName}`);
+}
+
+// Update selected filters display
+function updateSelectedFiltersDisplay(filters = selectedFilters, displayList = selectedFiltersList) {
+    const allSelected = Object.values(filters).flat();
+    
+    if (allSelected.length === 0) {
+        displayList.innerHTML = '<span class="no-selection">No filters selected - we\'ll surprise you!</span>';
+    } else {
+        displayList.innerHTML = allSelected.map(filter => 
+            `<span class="selected-filter-tag">
+                ${filter}
+                <button class="remove-btn" title="Remove filter">×</button>
+            </span>`
+        ).join('');
+    }
+}
+
+// Update filter button states
+function updateFilterButtonStates(filters = selectedFilters) {
+    Object.keys(filters).forEach(filterType => {
+        const buttons = document.querySelectorAll(`[data-filter="${filterType}"]`);
+        const selectedCount = filters[filterType].length;
+        
+        // Update selection count display
+        const countElement = document.getElementById(`${filterType}-count`);
+        if (countElement) {
+            countElement.textContent = `(${selectedCount}/3)`;
+        }
+        
+        buttons.forEach(button => {
+            const isSelected = filters[filterType].includes(button.dataset.value);
+            
+            if (isSelected) {
+                button.classList.add('active');
+                button.disabled = false;
+            } else if (selectedCount >= 3) {
+                button.classList.add('disabled');
+                button.disabled = true;
+            } else {
+                button.classList.remove('active', 'disabled');
+                button.disabled = false;
+            }
+        });
+    });
+}
+
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
-    // Focus on the include input when page loads
-    includeInput.focus();
+    // Initialize the selected filters display and button states
+    updateSelectedFiltersDisplay();
+    updateFilterButtonStates();
+    updateSelectedFiltersDisplay(selectedComboFilters, comboSelectedFiltersList);
+    updateFilterButtonStates(selectedComboFilters);
     
-    // Add some sample suggestions
-    const suggestions = [
-        "Try: paneer, chicken, spicy, vegetarian",
-        "Exclude: bitter gourd, brinjal, too spicy"
-    ];
+    // Show main menu by default
+    showSection('main');
     
-    // You could add a suggestions feature here
     console.log('Foodie Recommender App Loaded!');
     console.log(`Database contains ${dishDatabase.length} dishes`);
+    console.log(`Combo database contains ${comboDatabase.roti.length} roti/rice options and ${comboDatabase.curry.length} curry options`);
+    console.log('New interface with Single Dish, Combo Meal, and Surprise Me options ready!');
 });
