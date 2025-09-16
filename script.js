@@ -315,7 +315,8 @@ function showSection(section) {
 }
 
 function showMainMenu() {
-    showSection('main');
+    // Redirect back actions to Surprise Me as the primary flow
+    showSection('surprise-me');
 }
 
 // Surprise Me Function
@@ -808,8 +809,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSelectedFiltersDisplay(selectedComboFilters, comboSelectedFiltersList);
     updateFilterButtonStates(selectedComboFilters);
     
-    // Show main menu by default
-    showSection('main');
+    // Show Surprise Me by default
+    showSection('surprise-me');
     
     console.log('Foodie Recommender App Loaded!');
     console.log(`Database contains ${dishDatabase.length} dishes`);

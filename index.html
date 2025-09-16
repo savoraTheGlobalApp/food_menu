@@ -25,7 +25,7 @@
 
         <main class="main-content">
             <!-- Main Menu -->
-            <div id="main-menu" class="main-menu">
+            <div id="main-menu" class="main-menu hidden">
                 <h2>What would you like today?</h2>
                 <div class="menu-options">
                     <button class="menu-option" data-option="single-dish">
@@ -222,7 +222,7 @@
             <!-- Surprise Me Interface -->
             <div id="surprise-me-section" class="preference-section hidden">
                 <div class="section-header">
-                    <button class="back-btn" onclick="showMainMenu()">
+                    <button class="back-btn hidden" onclick="showMainMenu()">
                         <i class="fas fa-arrow-left"></i>
                         Back
                     </button>
@@ -230,7 +230,7 @@
                 </div>
                 
                 <div class="surprise-options">
-                    <p>We'll surprise you with either a single dish or a combo meal!</p>
+                    <p>We'll suggest you a dish that you will love!</p>
                     <button id="surprise-btn" class="recommend-btn">
                         <i class="fas fa-magic"></i>
                         Surprise Me!
