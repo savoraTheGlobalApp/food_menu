@@ -321,7 +321,7 @@ function showMainMenu() {
 
 // Surprise Me Function
 function surpriseMe() {
-    surpriseBtn.innerHTML = '<div class="loading"></div> Surprising you...';
+    surpriseBtn.innerHTML = '<div class="loading"></div> Suggesting your next meal...';
     surpriseBtn.disabled = true;
     
     setTimeout(() => {
@@ -334,7 +334,8 @@ function surpriseMe() {
             getRecommendation(true);
         }
         
-        surpriseBtn.innerHTML = '<i class="fas fa-magic"></i> Surprise Me!';
+        // After first click, encourage another recommendation
+        surpriseBtn.innerHTML = '<i class="fas fa-magic"></i> Try another';
         surpriseBtn.disabled = false;
     }, 1000);
 }
