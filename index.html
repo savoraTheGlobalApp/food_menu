@@ -24,25 +24,88 @@
         </header>
 
         <main class="main-content">
-            <!-- Main Menu -->
-            <div id="main-menu" class="main-menu hidden">
-                <h2>What would you like today?</h2>
-                <div class="menu-options">
-                    <button class="menu-option" data-option="single-dish">
-                        <i class="fas fa-utensils"></i>
-                        <h3>Single Dish</h3>
-                        <p>Get one perfect dish recommendation</p>
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="welcome-screen">
+                <div class="welcome-card">
+                    <h2>Welcome to Your Personal Food Menu!</h2>
+                    <p>Let's set up your food preferences to create a personalized 7-day menu.</p>
+                    <button id="start-setup-btn" class="primary-btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Get Started
                     </button>
-                    <button class="menu-option" data-option="combo-meal">
-                        <i class="fas fa-plate-wheat"></i>
-                        <h3>Combo Meal</h3>
-                        <p>Get roti/rice + curry combination</p>
-                    </button>
-                    <button class="menu-option" data-option="surprise-me">
-                        <i class="fas fa-magic"></i>
-                        <h3>Surprise Me</h3>
-                        <p>Let us choose something amazing</p>
-                    </button>
+                </div>
+            </div>
+
+            <!-- Food Preferences Setup -->
+            <div id="food-setup" class="food-setup hidden">
+                <div class="setup-card">
+                    <h2>What do you usually eat?</h2>
+                    <p>Add all the food items you regularly eat. We'll create a varied 7-day menu from these.</p>
+                    
+                    <div class="food-input-section">
+                        <div class="input-group">
+                            <input type="text" id="food-input" placeholder="Enter a food item (e.g., Dal Rice, Chicken Curry)">
+                            <button id="add-food-btn" class="add-btn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="added-foods">
+                        <h3>Your Food Items:</h3>
+                        <div id="food-list" class="food-list">
+                            <p class="no-foods">No food items added yet</p>
+                        </div>
+                    </div>
+
+                    <div class="setup-actions">
+                        <button id="generate-menu-btn" class="primary-btn" disabled>
+                            <i class="fas fa-calendar-alt"></i>
+                            Generate My 7-Day Menu
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7-Day Menu Display -->
+            <div id="menu-display" class="menu-display hidden">
+                <div class="menu-header">
+                    <h2>Your 7-Day Menu</h2>
+                    <div class="menu-actions">
+                        <button id="add-new-food-btn" class="secondary-btn">
+                            <i class="fas fa-plus"></i>
+                            Add Food
+                        </button>
+                        <button id="regenerate-menu-btn" class="secondary-btn">
+                            <i class="fas fa-sync"></i>
+                            Regenerate
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="weekly-menu" class="weekly-menu">
+                    <!-- Menu will be generated here -->
+                </div>
+            </div>
+
+            <!-- Add New Food Modal -->
+            <div id="add-food-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Add New Food Item</h3>
+                        <button id="close-modal-btn" class="close-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <input type="text" id="new-food-input" placeholder="Enter new food item">
+                            <button id="save-new-food-btn" class="primary-btn">
+                                <i class="fas fa-save"></i>
+                                Add Food
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -301,9 +364,15 @@
         <footer class="footer">
             <p>&copy; 2024 Foodie Recommender. Made with <i class="fas fa-heart"></i> for food lovers.</p>
         </footer>
+        
+        <!-- Floating Action Button -->
+        <button id="floating-btn" class="floating-btn" title="Get a surprise meal recommendation">
+            <i class="fas fa-utensils"></i>
+        </button>
     </div>
 
     <script src="script.js"></script>
+    <script src="food-menu.js"></script>
     <script>
         // Register service worker for PWA functionality
         if ('serviceWorker' in navigator) {

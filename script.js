@@ -223,6 +223,9 @@ const comboSelectedFiltersList = document.getElementById('combo-selected-filters
 // Surprise Me Elements
 const surpriseBtn = document.getElementById('surprise-btn');
 
+// Floating Button Elements
+const floatingBtn = document.getElementById('floating-btn');
+
 // Common Elements
 const noResults = document.getElementById('no-results');
 const clearPreferencesBtn = document.getElementById('clear-preferences');
@@ -261,6 +264,11 @@ comboRecommendBtn.addEventListener('click', getComboRecommendation);
 
 // Surprise me functionality
 surpriseBtn.addEventListener('click', surpriseMe);
+
+// Floating button functionality - shows surprise meal interface
+floatingBtn.addEventListener('click', () => {
+    showSection('surprise-me');
+});
 
 // Clear preferences
 if (clearPreferencesBtn) {
@@ -802,8 +810,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSelectedFiltersDisplay(selectedComboFilters, comboSelectedFiltersList);
     updateFilterButtonStates(selectedComboFilters);
     
-    // Show Surprise Me by default
-    showSection('surprise-me');
+    // Food menu system will handle its own display
+    // The old main menu is now replaced by the food menu system
     
     console.log('Foodie Recommender App Loaded!');
     console.log(`Database contains ${dishDatabase.length} dishes`);
