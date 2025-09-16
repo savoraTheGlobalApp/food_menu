@@ -209,8 +209,6 @@ const dishName = document.getElementById('dish-name');
 const dishDescription = document.getElementById('dish-description');
 const dishCuisine = document.getElementById('dish-cuisine');
 const dishType = document.getElementById('dish-type');
-const tryAgainBtn = document.getElementById('try-again-btn');
-const orderBtn = document.getElementById('order-btn');
 const selectedFiltersList = document.getElementById('selected-filters-list');
 
 // Combo Meal Elements
@@ -220,8 +218,6 @@ const rotiName = document.getElementById('roti-name');
 const rotiDescription = document.getElementById('roti-description');
 const curryName = document.getElementById('curry-name');
 const curryDescription = document.getElementById('curry-description');
-const comboTryAgainBtn = document.getElementById('combo-try-again-btn');
-const comboOrderBtn = document.getElementById('combo-order-btn');
 const comboSelectedFiltersList = document.getElementById('combo-selected-filters-list');
 
 // Surprise Me Elements
@@ -259,13 +255,9 @@ document.addEventListener('click', (e) => {
 
 // Single dish functionality
 recommendBtn.addEventListener('click', getRecommendation);
-tryAgainBtn.addEventListener('click', tryAgain);
-orderBtn.addEventListener('click', orderDish);
 
 // Combo meal functionality
 comboRecommendBtn.addEventListener('click', getComboRecommendation);
-comboTryAgainBtn.addEventListener('click', tryAgain);
-comboOrderBtn.addEventListener('click', orderCombo);
 
 // Surprise me functionality
 surpriseBtn.addEventListener('click', surpriseMe);
