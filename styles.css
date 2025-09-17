@@ -1262,6 +1262,39 @@ body {
     margin: 30px 0;
 }
 
+.predefined-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 20px 0 10px 0;
+}
+
+.food-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 9999px;
+    background: #fff;
+    color: #2f4f3a;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.food-chip:hover {
+    border-color: #a0a0a0;
+}
+
+.food-chip.active {
+    border-color: transparent;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(102, 126, 234, 0.25);
+}
+
 .input-group {
     display: flex;
     gap: 10px;

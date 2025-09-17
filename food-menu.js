@@ -5,6 +5,13 @@ class FoodMenuApp {
         this.weeklyMenu = [];
         this.mealTimes = ['Breakfast', 'Lunch', 'Dinner'];
         this.daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        this.predefinedFoodOptions = [
+            'Paneer Sabji', 'Gobhi Sabji', 'Moong Dal', 'Chana Dal', 'Masoor Dal',
+            'Jeera Rice', 'Plain Rice', 'Biryani Rice', 'Roti', 'Paratha',
+            'Aloo Sabji', 'Bhindi Sabji', 'Palak Paneer', 'Paneer Butter Masala',
+            'Rajma', 'Chole', 'Kadhi', 'Egg Curry', 'Chicken Curry',
+            'Veg Pulao', 'Curd Rice', 'Lemon Rice', 'Dosa', 'Idli'
+        ];
         
         this.initializeElements();
         this.attachEventListeners();
@@ -18,15 +25,17 @@ class FoodMenuApp {
         this.foodSetup = document.getElementById('food-setup');
         this.menuDisplay = document.getElementById('menu-display');
         this.addFoodModal = document.getElementById('add-food-modal');
+        this.predefinedOptionsContainer = document.getElementById('predefined-options');
 
         // Welcome screen elements
         this.startSetupBtn = document.getElementById('start-setup-btn');
 
         // Food setup elements
-        this.foodInput = document.getElementById('food-input');
-        this.addFoodBtn = document.getElementById('add-food-btn');
+        this.foodInput = document.getElementById('food-input'); // may not exist after UI change
+        this.addFoodBtn = document.getElementById('add-food-btn'); // may not exist
         this.foodList = document.getElementById('food-list');
         this.generateMenuBtn = document.getElementById('generate-menu-btn');
+        this.addOtherBtn = document.getElementById('add-other-btn');
 
         // Menu display elements
         this.weeklyMenuContainer = document.getElementById('weekly-menu');
@@ -44,10 +53,13 @@ class FoodMenuApp {
         this.startSetupBtn.addEventListener('click', () => this.showFoodSetup());
 
         // Food setup
-        this.addFoodBtn.addEventListener('click', () => this.addFood());
-        this.foodInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.addFood();
-        });
+        if (this.addFoodBtn) this.addFoodBtn.addEventListener('click', () => this.addFood());
+        if (this.foodInput) {
+            this.foodInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.addFood();
+            });
+        }
+        this.addOtherBtn.addEventListener('click', () => this.showAddFoodModal());
         this.generateMenuBtn.addEventListener('click', () => this.generateWeeklyMenu());
 
         // Menu display
@@ -65,6 +77,9 @@ class FoodMenuApp {
         this.addFoodModal.addEventListener('click', (e) => {
             if (e.target === this.addFoodModal) this.hideAddFoodModal();
         });
+
+        // Build predefined selectable chips
+        this.renderPredefinedOptions();
     }
 
     showWelcomeScreen() {
@@ -91,7 +106,7 @@ class FoodMenuApp {
     }
 
     addFood() {
-        const foodName = this.foodInput.value.trim();
+        const foodName = (this.foodInput ? this.foodInput.value.trim() : '');
         if (!foodName) return;
 
         if (this.userFoods.includes(foodName)) {
@@ -118,7 +133,7 @@ class FoodMenuApp {
 
     updateFoodList() {
         if (this.userFoods.length === 0) {
-            this.foodList.innerHTML = '<p class="no-foods">No food items added yet</p>';
+            this.foodList.innerHTML = '<p class="no-foods">No food items selected yet</p>';
             this.generateMenuBtn.disabled = true;
         } else {
             this.foodList.innerHTML = this.userFoods.map(food => `
@@ -129,8 +144,41 @@ class FoodMenuApp {
                     </button>
                 </div>
             `).join('');
-            this.generateMenuBtn.disabled = false;
+            this.generateMenuBtn.disabled = this.userFoods.length < 3;
         }
+    }
+
+    renderPredefinedOptions() {
+        if (!this.predefinedOptionsContainer) return;
+        this.predefinedOptionsContainer.innerHTML = this.predefinedFoodOptions.map(item => `
+            <button class="food-chip" data-food="${item}">${item}</button>
+        `).join('');
+
+        this.predefinedOptionsContainer.addEventListener('click', (e) => {
+            const chip = e.target.closest('.food-chip');
+            if (!chip) return;
+            const food = chip.dataset.food;
+            const isActive = chip.classList.contains('active');
+
+            if (isActive) {
+                chip.classList.remove('active');
+                this.userFoods = this.userFoods.filter(f => f !== food);
+            } else {
+                if (!this.userFoods.includes(food)) this.userFoods.push(food);
+                chip.classList.add('active');
+            }
+            this.updateFoodList();
+            this.saveUserData();
+        });
+
+        // Preselect chips if userFoods already has items
+        setTimeout(() => {
+            document.querySelectorAll('.food-chip').forEach(chip => {
+                if (this.userFoods.includes(chip.dataset.food)) {
+                    chip.classList.add('active');
+                }
+            });
+        }, 0);
     }
 
     generateWeeklyMenu() {
