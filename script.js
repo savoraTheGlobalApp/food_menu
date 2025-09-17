@@ -267,7 +267,33 @@ surpriseBtn.addEventListener('click', surpriseMe);
 
 // Floating button functionality - shows surprise meal interface
 floatingBtn.addEventListener('click', () => {
+    console.log('Floating button clicked - showing surprise section');
+    
+    // Hide food menu screens first
+    if (window.foodMenuApp) {
+        window.foodMenuApp.hideAllScreens();
+    }
+    
+    // Force show surprise section
+    const surpriseSection = document.getElementById('surprise-me-section');
+    if (surpriseSection) {
+        surpriseSection.classList.remove('hidden');
+        surpriseSection.style.display = 'block';
+        console.log('Forced surprise section to show');
+    }
+    
+    // Show surprise section
     showSection('surprise-me');
+    
+    // Debug: Check if surprise section is visible
+    setTimeout(() => {
+        const surpriseSection = document.getElementById('surprise-me-section');
+        console.log('Surprise section element:', surpriseSection);
+        console.log('Surprise section classes:', surpriseSection?.className);
+        console.log('Surprise section hidden:', surpriseSection?.classList.contains('hidden'));
+        console.log('Surprise section display:', surpriseSection?.style.display);
+        console.log('Surprise section computed style:', window.getComputedStyle(surpriseSection).display);
+    }, 100);
 });
 
 // Clear preferences
@@ -288,6 +314,8 @@ document.addEventListener('click', (e) => {
 
 // Navigation Functions
 function showSection(section) {
+    console.log('showSection called with:', section);
+    
     // Hide all sections
     mainMenu.classList.add('hidden');
     singleDishSection.classList.add('hidden');
@@ -302,21 +330,49 @@ function showSection(section) {
     switch(section) {
         case 'single-dish':
             singleDishSection.classList.remove('hidden');
+            console.log('Showing single dish section');
             break;
         case 'combo-meal':
             comboMealSection.classList.remove('hidden');
+            console.log('Showing combo meal section');
             break;
         case 'surprise-me':
             surpriseMeSection.classList.remove('hidden');
+            surpriseMeSection.style.display = 'block';
+            console.log('Showing surprise me section');
+            console.log('Surprise section display:', surpriseMeSection.style.display);
             break;
         default:
             mainMenu.classList.remove('hidden');
+            console.log('Showing main menu');
     }
 }
 
 function showMainMenu() {
     // Redirect back actions to Surprise Me as the primary flow
     showSection('surprise-me');
+}
+
+// Navigate back to the Food Menu system (main area)
+function goToFoodMenu() {
+    // If the modular FoodMenuApp exists, decide which screen to show
+    if (window.foodMenuApp) {
+        // Prefer showing user's existing weekly menu; otherwise setup; otherwise welcome
+        if (Array.isArray(window.foodMenuApp.weeklyMenu) && window.foodMenuApp.weeklyMenu.length > 0) {
+            window.foodMenuApp.showMenuDisplay();
+        } else if (Array.isArray(window.foodMenuApp.userFoods) && window.foodMenuApp.userFoods.length > 0) {
+            window.foodMenuApp.showFoodSetup();
+        } else {
+            window.foodMenuApp.showWelcomeScreen();
+        }
+    }
+    
+    // Hide surprise interface
+    const surpriseSection = document.getElementById('surprise-me-section');
+    if (surpriseSection) {
+        surpriseSection.classList.add('hidden');
+        surpriseSection.style.display = '';
+    }
 }
 
 // Surprise Me Function
