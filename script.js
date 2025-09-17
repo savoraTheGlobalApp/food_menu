@@ -373,6 +373,17 @@ function goToFoodMenu() {
         surpriseSection.classList.add('hidden');
         surpriseSection.style.display = '';
     }
+
+    // Ensure all one-time surprise result UIs are hidden on the main page
+    if (typeof resultSection !== 'undefined' && resultSection) {
+        resultSection.classList.add('hidden');
+    }
+    if (typeof comboResultSection !== 'undefined' && comboResultSection) {
+        comboResultSection.classList.add('hidden');
+    }
+    if (typeof noResults !== 'undefined' && noResults) {
+        noResults.classList.add('hidden');
+    }
 }
 
 // Surprise Me Function
