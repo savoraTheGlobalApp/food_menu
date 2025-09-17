@@ -1246,6 +1246,22 @@ body {
     text-align: center;
 }
 
+.setup-card .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.setup-card .back-btn:hover {
+    background: #e9ecef;
+}
+
 .welcome-card h2, .setup-card h2 {
     color: #2f4f3a;
     margin-bottom: 15px;
@@ -1393,6 +1409,22 @@ body {
     margin-bottom: 30px;
     flex-wrap: wrap;
     gap: 15px;
+}
+
+.menu-header .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.menu-header .back-btn:hover {
+    background: #e9ecef;
 }
 
 .menu-actions {

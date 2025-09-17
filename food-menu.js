@@ -26,6 +26,7 @@ class FoodMenuApp {
         this.menuDisplay = document.getElementById('menu-display');
         this.addFoodModal = document.getElementById('add-food-modal');
         this.predefinedOptionsContainer = document.getElementById('predefined-options');
+        this.setupBackBtn = document.getElementById('setup-back-btn');
 
         // Welcome screen elements
         this.startSetupBtn = document.getElementById('start-setup-btn');
@@ -41,6 +42,7 @@ class FoodMenuApp {
         this.weeklyMenuContainer = document.getElementById('weekly-menu');
         this.addNewFoodBtn = document.getElementById('add-new-food-btn');
         this.regenerateMenuBtn = document.getElementById('regenerate-menu-btn');
+        this.menuBackBtn = document.getElementById('menu-back-btn');
 
         // Modal elements
         this.newFoodInput = document.getElementById('new-food-input');
@@ -61,10 +63,12 @@ class FoodMenuApp {
         }
         this.addOtherBtn.addEventListener('click', () => this.showAddFoodModal());
         this.generateMenuBtn.addEventListener('click', () => this.generateWeeklyMenu());
+        this.setupBackBtn.addEventListener('click', () => this.showWelcomeScreen());
 
         // Menu display
         this.addNewFoodBtn.addEventListener('click', () => this.showAddFoodModal());
         this.regenerateMenuBtn.addEventListener('click', () => this.generateWeeklyMenu());
+        this.menuBackBtn.addEventListener('click', () => this.showFoodSetup());
 
         // Modal
         this.saveNewFoodBtn.addEventListener('click', () => this.saveNewFood());
