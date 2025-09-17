@@ -739,6 +739,483 @@ body {
     }
 }
 
+/* Enhanced Responsive Design for All Devices */
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1000px;
+        padding: 30px;
+    }
+    
+    .header {
+        margin-bottom: 50px;
+    }
+    
+    .logo h1 {
+        font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .welcome-card, .setup-card {
+        padding: 50px;
+    }
+    
+    .welcome-card h2, .setup-card h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Desktop (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        max-width: 900px;
+        padding: 25px;
+    }
+    
+    .welcome-card, .setup-card {
+        padding: 45px;
+    }
+}
+
+/* Tablet (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 750px;
+        padding: 20px;
+    }
+    
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .logo h1 {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .welcome-card, .setup-card {
+        padding: 35px;
+    }
+    
+    .welcome-card h2, .setup-card h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobile Landscape and Small Tablet (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header {
+        margin-bottom: 30px;
+        padding: 20px 0;
+    }
+    
+    .logo {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .logo h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .filter-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .filter-options {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .filter-btn {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+    
+    .recommend-btn {
+        font-size: 1.1rem;
+        padding: 15px 30px;
+    }
+    
+    .result-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+    
+    .dish-image {
+        margin: 0 auto 20px;
+    }
+    
+    .combo-result-card {
+        padding: 25px;
+    }
+    
+    .combo-items {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .combo-separator {
+        transform: rotate(90deg);
+    }
+    
+    .welcome-card, .setup-card {
+        padding: 30px;
+    }
+    
+    .welcome-card h2, .setup-card h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Mobile Portrait (up to 575px) */
+@media (max-width: 575px) {
+    .container {
+        padding: 10px;
+        min-height: 100vh;
+    }
+    
+    .header {
+        margin-bottom: 25px;
+        padding: 15px 0;
+    }
+    
+    .logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo i {
+        font-size: 2rem;
+        padding: 12px;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .main-content {
+        padding: 15px 10px;
+    }
+    
+    .filter-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .filter-group {
+        margin-bottom: 20px;
+    }
+    
+    .filter-label {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .filter-options {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .filter-btn {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        min-width: auto;
+    }
+    
+    .selected-filters {
+        margin: 20px 0;
+    }
+    
+    .selected-filter-tag {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+    
+    .recommend-btn {
+        font-size: 1rem;
+        padding: 12px 24px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .result-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .dish-image {
+        margin: 0 auto 15px;
+        width: 80px;
+        height: 80px;
+    }
+    
+    .dish-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .dish-info p {
+        font-size: 0.9rem;
+    }
+    
+    .dish-tags {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 15px;
+    }
+    
+    .tag {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+    
+    .combo-result-card {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .combo-result-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+    
+    .combo-items {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .combo-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .combo-separator {
+        transform: rotate(90deg);
+        margin: 10px 0;
+    }
+    
+    .no-results-content {
+        padding: 30px 20px;
+    }
+    
+    .no-results-content i {
+        font-size: 3rem;
+    }
+    
+    .no-results-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .no-results-content p {
+        font-size: 0.9rem;
+    }
+    
+    .secondary-btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+    
+    .welcome-card, .setup-card {
+        padding: 25px;
+        margin: 10px;
+    }
+    
+    .welcome-card h2, .setup-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .welcome-card p, .setup-card p {
+        font-size: 1rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .input-group input {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .add-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .food-list {
+        margin: 20px 0;
+    }
+    
+    .food-item {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .weekly-menu {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .day-card {
+        padding: 15px;
+    }
+    
+    .day-header {
+        margin-bottom: 15px;
+    }
+    
+    .day-name {
+        font-size: 1.1rem;
+    }
+    
+    .day-date {
+        font-size: 0.8rem;
+    }
+    
+    .meal-item {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .modal-content {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra Small Mobile (up to 375px) */
+@media (max-width: 375px) {
+    .container {
+        padding: 8px;
+    }
+    
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+    
+    .subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .filter-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .recommend-btn {
+        font-size: 0.95rem;
+        padding: 10px 20px;
+    }
+    
+    .result-card {
+        padding: 15px;
+    }
+    
+    .combo-result-card {
+        padding: 15px;
+    }
+    
+    .welcome-card, .setup-card {
+        padding: 20px;
+        margin: 5px;
+    }
+    
+    .welcome-card h2, .setup-card h2 {
+        font-size: 1.3rem;
+    }
+    
+    .welcome-card p, .setup-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Floating Button Responsive */
+@media (max-width: 768px) {
+    .floating-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+}
+
+/* Food Menu System Responsive */
+@media (max-width: 768px) {
+    .welcome-screen, .food-setup, .menu-display {
+        padding: 15px;
+    }
+    
+    .menu-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .menu-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .menu-actions .secondary-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-screen, .food-setup, .menu-display {
+        padding: 10px;
+    }
+    
+    .weekly-menu {
+        grid-template-columns: 1fr;
+    }
+    
+    .day-card {
+        margin-bottom: 15px;
+    }
+}
+
 /* Loading Animation */
 .loading {
     display: inline-block;
