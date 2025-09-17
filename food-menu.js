@@ -144,7 +144,7 @@ class FoodMenuApp {
                     </button>
                 </div>
             `).join('');
-            this.generateMenuBtn.disabled = this.userFoods.length < 3;
+            this.generateMenuBtn.disabled = this.userFoods.length < 1;
         }
     }
 
@@ -182,8 +182,8 @@ class FoodMenuApp {
     }
 
     generateWeeklyMenu() {
-        if (this.userFoods.length < 3) {
-            alert('Please add at least 3 food items to generate a menu!');
+        if (this.userFoods.length < 1) {
+            alert('Please select at least 1 food item to generate a menu!');
             return;
         }
 
