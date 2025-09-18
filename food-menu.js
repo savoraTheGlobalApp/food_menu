@@ -238,20 +238,8 @@ class FoodMenuApp {
 
     updateFoodList() {
         const allFoods = Object.values(this.userFoods).flat();
-        if (allFoods.length === 0) {
-            this.foodList.innerHTML = '<p class="no-foods">No food items selected yet</p>';
-            this.generateMenuBtn.disabled = true;
-        } else {
-            this.foodList.innerHTML = allFoods.map(food => `
-                <div class="food-item">
-                    <span>${food}</span>
-                    <button class="remove-btn" onclick="foodMenuApp.removeFoodFromCategory('${food}')">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            `).join('');
-            this.generateMenuBtn.disabled = allFoods.length < 1;
-        }
+        // Keep button enablement logic but do not render list to UI
+        this.generateMenuBtn.disabled = allFoods.length < 1;
     }
 
     renderCategorizedOptions() {

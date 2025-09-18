@@ -1475,6 +1475,11 @@ body {
     margin: 30px 0;
 }
 
+/* Hide selected items list below categories – user can already see selections above */
+.added-foods {
+    display: none;
+}
+
 .added-foods h3 {
     color: #2f4f3a;
     margin-bottom: 15px;
