@@ -1,17 +1,38 @@
 // Food Menu System JavaScript
 class FoodMenuApp {
     constructor() {
-        this.userFoods = [];
+        this.userFoods = {
+            breakfast: [],
+            dal: [],
+            vegetables: [],
+            fruits: []
+        };
         this.weeklyMenu = [];
         this.mealTimes = ['Breakfast', 'Lunch', 'Dinner'];
         this.daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-        this.predefinedFoodOptions = [
-            'Paneer Sabji', 'Gobhi Sabji', 'Moong Dal', 'Chana Dal', 'Masoor Dal',
-            'Jeera Rice', 'Plain Rice', 'Biryani Rice', 'Roti', 'Paratha',
-            'Aloo Sabji', 'Bhindi Sabji', 'Palak Paneer', 'Paneer Butter Masala',
-            'Rajma', 'Chole', 'Kadhi', 'Egg Curry', 'Chicken Curry',
-            'Veg Pulao', 'Curd Rice', 'Lemon Rice', 'Dosa', 'Idli'
-        ];
+        this.categorizedFoodOptions = {
+            breakfast: [
+                "Poha", "Daliya", "Upma", "Aloo Paratha", "Paneer Paratha", 
+                "Gobhi Paratha", "Masala Dosa", "Idli Sambhar", "Veg Sandwich",
+                "Cornflakes", "Oats", "Pancakes", "French Toast", "Scrambled Eggs"
+            ],
+            dal: [
+                "Moong Dal", "Masoor Dal", "Chana Dal", "Toor (Arhar) Dal", 
+                "Urad Dal", "Rajma", "Chhole", "Lobia", "Black Gram Dal",
+                "Green Gram Dal", "Red Lentils", "Yellow Dal"
+            ],
+            vegetables: [
+                "Potato", "Paneer", "Mushroom", "Spinach", "Cauliflower", 
+                "Broccoli", "Cabbage", "Beans", "Peas", "Brinjal", 
+                "Okra (Bhindi)", "Capsicum", "Bottle Gourd (Lauki)", "Pumpkin", "Carrot",
+                "Tomato", "Onion", "Cucumber", "Radish", "Beetroot"
+            ],
+            fruits: [
+                "Apple", "Banana", "Carrot", "Beetroot", "Papaya", 
+                "Orange", "Grapes", "Mango", "Pomegranate", "Guava", 
+                "Watermelon", "Pineapple", "Strawberry", "Kiwi", "Pear"
+            ]
+        };
         
         this.initializeElements();
         this.attachEventListeners();
@@ -25,8 +46,13 @@ class FoodMenuApp {
         this.foodSetup = document.getElementById('food-setup');
         this.menuDisplay = document.getElementById('menu-display');
         this.addFoodModal = document.getElementById('add-food-modal');
-        this.predefinedOptionsContainer = document.getElementById('predefined-options');
         this.setupBackBtn = document.getElementById('setup-back-btn');
+        
+        // Category containers
+        this.breakfastOptions = document.getElementById('breakfast-options');
+        this.dalOptions = document.getElementById('dal-options');
+        this.vegetablesOptions = document.getElementById('vegetables-options');
+        this.fruitsOptions = document.getElementById('fruits-options');
 
         // Welcome screen elements
         this.startSetupBtn = document.getElementById('start-setup-btn');
@@ -55,13 +81,6 @@ class FoodMenuApp {
         this.startSetupBtn.addEventListener('click', () => this.showFoodSetup());
 
         // Food setup
-        if (this.addFoodBtn) this.addFoodBtn.addEventListener('click', () => this.addFood());
-        if (this.foodInput) {
-            this.foodInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') this.addFood();
-            });
-        }
-        this.addOtherBtn.addEventListener('click', () => this.showAddFoodModal());
         this.generateMenuBtn.addEventListener('click', () => this.generateWeeklyMenu());
         this.setupBackBtn.addEventListener('click', () => this.showWelcomeScreen());
 
@@ -82,8 +101,8 @@ class FoodMenuApp {
             if (e.target === this.addFoodModal) this.hideAddFoodModal();
         });
 
-        // Build predefined selectable chips
-        this.renderPredefinedOptions();
+        // Render categorized options and attach listeners
+        this.renderCategorizedOptions();
     }
 
     showWelcomeScreen() {
@@ -136,96 +155,131 @@ class FoodMenuApp {
     }
 
     updateFoodList() {
-        if (this.userFoods.length === 0) {
+        const allFoods = Object.values(this.userFoods).flat();
+        if (allFoods.length === 0) {
             this.foodList.innerHTML = '<p class="no-foods">No food items selected yet</p>';
             this.generateMenuBtn.disabled = true;
         } else {
-            this.foodList.innerHTML = this.userFoods.map(food => `
+            this.foodList.innerHTML = allFoods.map(food => `
                 <div class="food-item">
                     <span>${food}</span>
-                    <button class="remove-btn" onclick="foodMenuApp.removeFood('${food}')">
+                    <button class="remove-btn" onclick="foodMenuApp.removeFoodFromCategory('${food}')">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
             `).join('');
-            this.generateMenuBtn.disabled = this.userFoods.length < 1;
+            this.generateMenuBtn.disabled = allFoods.length < 1;
         }
     }
 
-    renderPredefinedOptions() {
-        if (!this.predefinedOptionsContainer) return;
-        this.predefinedOptionsContainer.innerHTML = this.predefinedFoodOptions.map(item => `
-            <button class="food-chip" data-food="${item}">${item}</button>
-        `).join('');
-
-        this.predefinedOptionsContainer.addEventListener('click', (e) => {
-            const chip = e.target.closest('.food-chip');
-            if (!chip) return;
-            const food = chip.dataset.food;
-            const isActive = chip.classList.contains('active');
-
-            if (isActive) {
-                chip.classList.remove('active');
-                this.userFoods = this.userFoods.filter(f => f !== food);
-            } else {
-                if (!this.userFoods.includes(food)) this.userFoods.push(food);
-                chip.classList.add('active');
-            }
-            this.updateFoodList();
-            this.saveUserData();
-        });
-
-        // Preselect chips if userFoods already has items
-        setTimeout(() => {
-            document.querySelectorAll('.food-chip').forEach(chip => {
-                if (this.userFoods.includes(chip.dataset.food)) {
-                    chip.classList.add('active');
-                }
+    renderCategorizedOptions() {
+        // Render breakfast options
+        this.renderCategoryOptions('breakfast', this.breakfastOptions);
+        
+        // Render dal options
+        this.renderCategoryOptions('dal', this.dalOptions);
+        
+        // Render vegetables options
+        this.renderCategoryOptions('vegetables', this.vegetablesOptions);
+        
+        // Render fruits options
+        this.renderCategoryOptions('fruits', this.fruitsOptions);
+        
+        // Attach custom add buttons
+        document.querySelectorAll('.add-custom-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const category = e.target.dataset.category;
+                this.showAddFoodModal(category);
             });
-        }, 0);
+        });
+    }
+
+    renderCategoryOptions(category, container) {
+        if (container) {
+            container.innerHTML = this.categorizedFoodOptions[category].map(food => `
+                <span class="food-chip ${this.userFoods[category].includes(food) ? 'active' : ''}" data-food="${food}" data-category="${category}">
+                    ${food}
+                </span>
+            `).join('');
+
+            container.querySelectorAll('.food-chip').forEach(chip => {
+                chip.addEventListener('click', (e) => this.toggleCategorizedFoodSelection(e.target.dataset.food, e.target.dataset.category));
+            });
+        }
+    }
+
+    toggleCategorizedFoodSelection(foodName, category) {
+        if (this.userFoods[category].includes(foodName)) {
+            this.userFoods[category] = this.userFoods[category].filter(food => food !== foodName);
+        } else {
+            this.userFoods[category].push(foodName);
+        }
+        this.renderCategoryOptions(category, this[`${category}Options`]);
+        this.updateFoodList();
+        this.saveUserData();
+    }
+
+    removeFoodFromCategory(foodName) {
+        // Find which category contains this food and remove it
+        for (const category in this.userFoods) {
+            if (this.userFoods[category].includes(foodName)) {
+                this.userFoods[category] = this.userFoods[category].filter(food => food !== foodName);
+                this.renderCategoryOptions(category, this[`${category}Options`]);
+                break;
+            }
+        }
+        this.updateFoodList();
+        this.saveUserData();
     }
 
     generateWeeklyMenu() {
-        if (this.userFoods.length < 1) {
+        const totalFoods = Object.values(this.userFoods).flat().length;
+        if (totalFoods < 1) {
             alert('Please select at least 1 food item to generate a menu!');
             return;
         }
 
         this.weeklyMenu = [];
-        const totalMeals = this.daysOfWeek.length * this.mealTimes.length; // 21 meals
-        const shuffledFoods = [...this.userFoods];
-        
-        // Shuffle foods to ensure variety
-        for (let i = shuffledFoods.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffledFoods[i], shuffledFoods[j]] = [shuffledFoods[j], shuffledFoods[i]];
-        }
-
-        // Generate menu ensuring no consecutive same meals
-        let lastMeal = null;
-        let foodIndex = 0;
 
         for (let dayIndex = 0; dayIndex < this.daysOfWeek.length; dayIndex++) {
             const day = this.daysOfWeek[dayIndex];
             const dayMeals = [];
 
-            for (let mealIndex = 0; mealIndex < this.mealTimes.length; mealIndex++) {
-                const mealTime = this.mealTimes[mealIndex];
-                let selectedFood;
+            // Generate breakfast: 1 from breakfast + 1 from fruits
+            const breakfastItems = this.getRandomItems(this.userFoods.breakfast, 1);
+            const fruitItems = this.getRandomItems(this.userFoods.fruits, 1);
+            const breakfastMeal = [...breakfastItems, ...fruitItems].join(', ');
+            
+            dayMeals.push({
+                time: 'Breakfast',
+                food: breakfastMeal
+            });
 
-                // Ensure no consecutive same meals
-                do {
-                    selectedFood = shuffledFoods[foodIndex % shuffledFoods.length];
-                    foodIndex++;
-                } while (selectedFood === lastMeal && shuffledFoods.length > 1);
+            // Generate lunch: 1 from dal + 1 from vegetables + 1 from fruits + Roti/Rice
+            const lunchItems = [
+                ...this.getRandomItems(this.userFoods.dal, 1),
+                ...this.getRandomItems(this.userFoods.vegetables, 1),
+                ...this.getRandomItems(this.userFoods.fruits, 1),
+                'Roti/Rice'
+            ].join(', ');
+            
+            dayMeals.push({
+                time: 'Lunch',
+                food: lunchItems
+            });
 
-                dayMeals.push({
-                    time: mealTime,
-                    food: selectedFood
-                });
-
-                lastMeal = selectedFood;
-            }
+            // Generate dinner: 1 from dal + 1 from vegetables + 1 from fruits + Roti/Rice
+            const dinnerItems = [
+                ...this.getRandomItems(this.userFoods.dal, 1),
+                ...this.getRandomItems(this.userFoods.vegetables, 1),
+                ...this.getRandomItems(this.userFoods.fruits, 1),
+                'Roti/Rice'
+            ].join(', ');
+            
+            dayMeals.push({
+                time: 'Dinner',
+                food: dinnerItems
+            });
 
             this.weeklyMenu.push({
                 day: day,
@@ -235,6 +289,14 @@ class FoodMenuApp {
 
         this.showMenuDisplay();
         this.saveUserData();
+    }
+
+    getRandomItems(array, count) {
+        if (array.length === 0) return [];
+        if (array.length <= count) return [...array];
+        
+        const shuffled = [...array].sort(() => Math.random() - 0.5);
+        return shuffled.slice(0, count);
     }
 
     renderWeeklyMenu() {
@@ -267,9 +329,10 @@ class FoodMenuApp {
         }).join('');
     }
 
-    showAddFoodModal() {
+    showAddFoodModal(category = null) {
         this.addFoodModal.classList.remove('hidden');
         this.newFoodInput.focus();
+        this.currentCategory = category;
     }
 
     hideAddFoodModal() {
@@ -281,13 +344,19 @@ class FoodMenuApp {
         const foodName = this.newFoodInput.value.trim();
         if (!foodName) return;
 
-        if (this.userFoods.includes(foodName)) {
+        // Check if food already exists in any category
+        const allFoods = Object.values(this.userFoods).flat();
+        if (allFoods.includes(foodName)) {
             alert('This food item is already added!');
             return;
         }
 
-        this.userFoods.push(foodName);
+        // Add to the specified category or default to breakfast
+        const category = this.currentCategory || 'breakfast';
+        this.userFoods[category].push(foodName);
+        
         this.hideAddFoodModal();
+        this.renderCategoryOptions(category, this[`${category}Options`]);
         this.updateFoodList();
         this.saveUserData();
         
@@ -310,13 +379,33 @@ class FoodMenuApp {
         if (savedData) {
             try {
                 const userData = JSON.parse(savedData);
-                this.userFoods = userData.foods || [];
+                // Handle migration from old format to new categorized format
+                if (Array.isArray(userData.foods)) {
+                    // Old format - migrate to new format
+                    this.userFoods = {
+                        breakfast: [],
+                        dal: [],
+                        vegetables: [],
+                        fruits: []
+                    };
+                } else {
+                    // New format
+                    this.userFoods = userData.foods || {
+                        breakfast: [],
+                        dal: [],
+                        vegetables: [],
+                        fruits: []
+                    };
+                }
                 this.weeklyMenu = userData.weeklyMenu || [];
                 
+                // Check if user has any foods selected
+                const totalFoods = Object.values(this.userFoods).flat().length;
+                
                 // If user has foods and menu, show menu directly
-                if (this.userFoods.length > 0 && this.weeklyMenu.length > 0) {
+                if (totalFoods > 0 && this.weeklyMenu.length > 0) {
                     this.showMenuDisplay();
-                } else if (this.userFoods.length > 0) {
+                } else if (totalFoods > 0) {
                     this.showFoodSetup();
                 } else {
                     // Show welcome screen if no data

@@ -44,21 +44,58 @@
                      Back
                  </button>
                     <h2>What do you usually eat?</h2>
-                    <p>Select your usual meals (one or more). You can also add your own.</p>
+                    <p>Select your usual meals from each category (one or more). You can also add your own.</p>
                     
-                     <div class="predefined-options" id="predefined-options"></div>
- 
-                     <div class="food-input-section">
-                         <button id="add-other-btn" class="secondary-btn" type="button">
-                             <i class="fas fa-plus"></i>
-                             Add other item
-                         </button>
-                     </div>
+                    <div class="food-categories">
+                        <!-- Breakfast Category -->
+                        <div class="food-category">
+                            <h3><i class="fas fa-sun"></i> Breakfast</h3>
+                            <div id="breakfast-options" class="category-options">
+                                <!-- Breakfast options will be rendered here by JS -->
+                            </div>
+                            <button class="add-custom-btn" data-category="breakfast">
+                                <i class="fas fa-plus"></i> Add custom breakfast item
+                            </button>
+                        </div>
+
+                        <!-- Dal/Lentils Category -->
+                        <div class="food-category">
+                            <h3><i class="fas fa-seedling"></i> Dal (Lentils)</h3>
+                            <div id="dal-options" class="category-options">
+                                <!-- Dal options will be rendered here by JS -->
+                            </div>
+                            <button class="add-custom-btn" data-category="dal">
+                                <i class="fas fa-plus"></i> Add custom dal item
+                            </button>
+                        </div>
+
+                        <!-- Vegetables Category -->
+                        <div class="food-category">
+                            <h3><i class="fas fa-carrot"></i> Vegetables</h3>
+                            <div id="vegetables-options" class="category-options">
+                                <!-- Vegetable options will be rendered here by JS -->
+                            </div>
+                            <button class="add-custom-btn" data-category="vegetables">
+                                <i class="fas fa-plus"></i> Add custom vegetable
+                            </button>
+                        </div>
+
+                        <!-- Fruits/Salad Category -->
+                        <div class="food-category">
+                            <h3><i class="fas fa-apple-alt"></i> Fruits/Salad</h3>
+                            <div id="fruits-options" class="category-options">
+                                <!-- Fruit options will be rendered here by JS -->
+                            </div>
+                            <button class="add-custom-btn" data-category="fruits">
+                                <i class="fas fa-plus"></i> Add custom fruit/salad
+                            </button>
+                        </div>
+                    </div>
 
                     <div class="added-foods">
-                        <h3>Your Food Items:</h3>
+                        <h3>Your Selected Food Items:</h3>
                         <div id="food-list" class="food-list">
-                            <p class="no-foods">No food items added yet</p>
+                            <p class="no-foods">No food items selected yet</p>
                         </div>
                     </div>
 
