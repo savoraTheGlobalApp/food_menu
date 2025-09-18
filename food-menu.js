@@ -69,6 +69,11 @@ class FoodMenuApp {
         this.addNewFoodBtn = document.getElementById('add-new-food-btn');
         this.regenerateMenuBtn = document.getElementById('regenerate-menu-btn');
         this.menuBackBtn = document.getElementById('menu-back-btn');
+        this.viewToggleBtn = document.getElementById('view-toggle-btn');
+        this.weeklyMenuEl = document.getElementById('weekly-menu');
+        this.dailyMenuEl = document.getElementById('daily-menu');
+        this.dailyDayTitle = document.getElementById('daily-day-title');
+        this.dailyMealsEl = document.getElementById('daily-meals');
 
         // Modal elements
         this.newFoodInput = document.getElementById('new-food-input');
@@ -88,6 +93,7 @@ class FoodMenuApp {
         this.addNewFoodBtn.addEventListener('click', () => this.showAddFoodModal());
         this.regenerateMenuBtn.addEventListener('click', () => this.generateWeeklyMenu());
         this.menuBackBtn.addEventListener('click', () => this.showFoodSetup());
+        this.viewToggleBtn.addEventListener('click', () => this.toggleView());
 
         // Modal
         this.saveNewFoodBtn.addEventListener('click', () => this.saveNewFood());
@@ -103,6 +109,66 @@ class FoodMenuApp {
 
         // Render categorized options and attach listeners
         this.renderCategorizedOptions();
+    }
+
+    toggleView() {
+        const weeklyVisible = !this.weeklyMenuEl.classList.contains('hidden');
+        if (weeklyVisible) {
+            // Switch to daily view
+            this.weeklyMenuEl.classList.add('hidden');
+            this.dailyMenuEl.classList.remove('hidden');
+            this.viewToggleBtn.innerHTML = '<i class="fas fa-columns"></i> Weekly View';
+            this.currentDailyIndex = this.currentDailyIndex || 0;
+            this.renderDailyView(this.currentDailyIndex);
+            this.attachSwipeHandlers();
+        } else {
+            // Switch to weekly view
+            this.dailyMenuEl.classList.add('hidden');
+            this.weeklyMenuEl.classList.remove('hidden');
+            this.viewToggleBtn.innerHTML = '<i class="fas fa-columns"></i> Daily View';
+        }
+    }
+
+    renderDailyView(dayIndex) {
+        if (!this.weeklyMenu || this.weeklyMenu.length === 0) return;
+        const clamped = Math.max(0, Math.min(dayIndex, this.weeklyMenu.length - 1));
+        this.currentDailyIndex = clamped;
+        const dayData = this.weeklyMenu[clamped];
+        this.dailyDayTitle.textContent = dayData.day;
+        this.dailyMealsEl.innerHTML = dayData.meals.map(m => `
+            <div class="meal-item">
+                <div class="meal-time">${m.time}</div>
+                <div class="meal-name">${m.food}</div>
+            </div>
+        `).join('');
+    }
+
+    attachSwipeHandlers() {
+        // Simple touch swipe for day navigation
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const threshold = 50; // px
+
+        const onTouchStart = (e) => { touchStartX = e.changedTouches[0].screenX; };
+        const onTouchEnd = (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const delta = touchEndX - touchStartX;
+            if (Math.abs(delta) < threshold) return;
+            if (delta < 0) {
+                // swipe left => next day
+                this.renderDailyView((this.currentDailyIndex || 0) + 1);
+            } else {
+                // swipe right => prev day
+                this.renderDailyView((this.currentDailyIndex || 0) - 1);
+            }
+        };
+
+        this.dailyMenuEl.removeEventListener('touchstart', this._onTouchStart);
+        this.dailyMenuEl.removeEventListener('touchend', this._onTouchEnd);
+        this._onTouchStart = onTouchStart;
+        this._onTouchEnd = onTouchEnd;
+        this.dailyMenuEl.addEventListener('touchstart', onTouchStart, { passive: true });
+        this.dailyMenuEl.addEventListener('touchend', onTouchEnd, { passive: true });
     }
 
     showWelcomeScreen() {

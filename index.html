@@ -117,6 +117,10 @@
                      </button>
                     <h2>Your 7-Day Menu</h2>
                     <div class="menu-actions">
+                        <button id="view-toggle-btn" class="secondary-btn" title="Toggle weekly/daily view" type="button">
+                            <i class="fas fa-columns"></i>
+                            Daily View
+                        </button>
                         <button id="add-new-food-btn" class="secondary-btn">
                             <i class="fas fa-plus"></i>
                             Add Food
@@ -130,6 +134,17 @@
                 
                 <div id="weekly-menu" class="weekly-menu">
                     <!-- Menu will be generated here -->
+                </div>
+
+                <!-- Daily swipeable view -->
+                <div id="daily-menu" class="daily-menu hidden" aria-live="polite">
+                    <div class="daily-card">
+                        <div class="daily-header">
+                            <h3 id="daily-day-title">Monday</h3>
+                        </div>
+                        <div id="daily-meals" class="daily-meals"></div>
+                        <div class="swipe-hint">Swipe left/right to switch days</div>
+                    </div>
                 </div>
             </div>
 
