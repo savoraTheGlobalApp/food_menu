@@ -370,29 +370,45 @@ class FoodMenuApp {
         const startOfWeek = new Date(today);
         startOfWeek.setDate(today.getDate() - today.getDay() + 1); // Start from Monday
 
-        this.weeklyMenuContainer.innerHTML = this.weeklyMenu.map((dayData, index) => {
+        const header = `
+            <div class="calendar-row calendar-header">
+                <div class="calendar-cell head">Day</div>
+                <div class="calendar-cell head">Breakfast</div>
+                <div class="calendar-cell head">Lunch</div>
+                <div class="calendar-cell head">Dinner</div>
+            </div>
+        `;
+
+        const rows = this.weeklyMenu.map((dayData, index) => {
             const currentDate = new Date(startOfWeek);
             currentDate.setDate(startOfWeek.getDate() + index);
-            const dateString = currentDate.toLocaleDateString('en-US', { 
-                month: 'short', 
-                day: 'numeric' 
-            });
+            const dateString = currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+            const mealsByTime = {
+                Breakfast: dayData.meals.find(m => m.time === 'Breakfast')?.food || '',
+                Lunch: dayData.meals.find(m => m.time === 'Lunch')?.food || '',
+                Dinner: dayData.meals.find(m => m.time === 'Dinner')?.food || ''
+            };
 
             return `
-                <div class="day-card">
-                    <div class="day-header">
+                <div class="calendar-row">
+                    <div class="calendar-cell day">
                         <div class="day-name">${dayData.day}</div>
                         <div class="day-date">${dateString}</div>
                     </div>
-                    ${dayData.meals.map(meal => `
-                        <div class="meal-item">
-                            <span class="meal-name">${meal.food}</span>
-                            <span class="meal-time">${meal.time}</span>
-                        </div>
-                    `).join('')}
+                    <div class="calendar-cell">${mealsByTime.Breakfast}</div>
+                    <div class="calendar-cell">${mealsByTime.Lunch}</div>
+                    <div class="calendar-cell">${mealsByTime.Dinner}</div>
                 </div>
             `;
         }).join('');
+
+        this.weeklyMenuContainer.innerHTML = `
+            <div class="calendar-grid">
+                ${header}
+                ${rows}
+            </div>
+        `;
     }
 
     showAddFoodModal(category = null) {
