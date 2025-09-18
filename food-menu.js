@@ -265,17 +265,45 @@ class FoodMenuApp {
     }
 
     renderCategoryOptions(category, container) {
-        if (container) {
-            container.innerHTML = this.categorizedFoodOptions[category].map(food => `
-                <span class="food-chip ${this.userFoods[category].includes(food) ? 'active' : ''}" data-food="${food}" data-category="${category}">
-                    ${food}
-                </span>
-            `).join('');
+        if (!container) return;
 
-            container.querySelectorAll('.food-chip').forEach(chip => {
-                chip.addEventListener('click', (e) => this.toggleCategorizedFoodSelection(e.target.dataset.food, e.target.dataset.category));
+        const predefined = this.categorizedFoodOptions[category] || [];
+        const customOnly = (this.userFoods[category] || []).filter(f => !predefined.includes(f));
+
+        const predefinedHtml = predefined.map(food => `
+            <span class="food-chip ${this.userFoods[category].includes(food) ? 'active' : ''}" data-food="${food}" data-category="${category}">
+                ${food}
+            </span>
+        `).join('');
+
+        const customHtml = customOnly.map(food => `
+            <span class="food-chip active custom-chip" data-food="${food}" data-category="${category}">
+                ${food}
+                <button class="remove-custom" data-remove="true" data-food="${food}" data-category="${category}" title="Remove ${food}" type="button">
+                    <i class="fas fa-times"></i>
+                </button>
+            </span>
+        `).join('');
+
+        container.innerHTML = `${predefinedHtml}${customHtml}`;
+
+        // Toggle selection (ignore clicks on remove button)
+        container.querySelectorAll('.food-chip').forEach(chip => {
+            chip.addEventListener('click', (e) => {
+                if (e.target.closest('.remove-custom')) return;
+                const { food, category } = e.currentTarget.dataset;
+                this.toggleCategorizedFoodSelection(food, category);
             });
-        }
+        });
+
+        // Remove custom chips
+        container.querySelectorAll('.remove-custom').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const { food, category } = e.currentTarget.dataset;
+                this.removeCustomFromCategory(category, food);
+            });
+        });
     }
 
     toggleCategorizedFoodSelection(foodName, category) {
@@ -298,6 +326,14 @@ class FoodMenuApp {
                 break;
             }
         }
+        this.updateFoodList();
+        this.saveUserData();
+    }
+
+    removeCustomFromCategory(category, foodName) {
+        if (!this.userFoods[category]) return;
+        this.userFoods[category] = this.userFoods[category].filter(f => f !== foodName);
+        this.renderCategoryOptions(category, this[`${category}Options`]);
         this.updateFoodList();
         this.saveUserData();
     }

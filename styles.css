@@ -1371,6 +1371,32 @@ body {
     transform: translateY(-2px);
 }
 
+.custom-chip {
+    position: relative;
+    padding-right: 34px; /* space for remove button */
+}
+
+.custom-chip .remove-custom {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.custom-chip .remove-custom i {
+    font-size: 0.8rem;
+}
+
 .add-custom-btn {
     background: #f8f9fa;
     color: #6c757d;
