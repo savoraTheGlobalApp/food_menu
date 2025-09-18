@@ -138,7 +138,12 @@ class FoodMenuApp {
         this.dailyMealsEl.innerHTML = dayData.meals.map(m => `
             <div class="meal-item">
                 <div class="meal-time">${m.time}</div>
-                <div class="meal-name">${m.food}</div>
+                <div class="meal-name-actions">
+                    <div class="meal-name">${m.food}</div>
+                    <button class="cell-regenerate-btn" data-day="${clamped}" data-meal="${m.time}" title="Regenerate ${m.time.toLowerCase()}" type="button">
+                        <i class="fas fa-sync"></i>
+                    </button>
+                </div>
             </div>
         `).join('');
     }
@@ -169,6 +174,17 @@ class FoodMenuApp {
         this._onTouchEnd = onTouchEnd;
         this.dailyMenuEl.addEventListener('touchstart', onTouchStart, { passive: true });
         this.dailyMenuEl.addEventListener('touchend', onTouchEnd, { passive: true });
+        
+        // Click to regenerate specific meal in daily view
+        this.dailyMealsEl.removeEventListener('click', this._onDailyRegenClick);
+        this._onDailyRegenClick = (e) => {
+            const btn = e.target.closest('.cell-regenerate-btn');
+            if (!btn) return;
+            const dayIdx = parseInt(btn.dataset.day, 10);
+            const mealTime = btn.dataset.meal;
+            this.regenerateSingleMeal(dayIdx, mealTime);
+        };
+        this.dailyMealsEl.addEventListener('click', this._onDailyRegenClick);
     }
 
     showWelcomeScreen() {
@@ -396,9 +412,30 @@ class FoodMenuApp {
                         <div class="day-name">${dayData.day}</div>
                         <div class="day-date">${dateString}</div>
                     </div>
-                    <div class="calendar-cell">${mealsByTime.Breakfast}</div>
-                    <div class="calendar-cell">${mealsByTime.Lunch}</div>
-                    <div class="calendar-cell">${mealsByTime.Dinner}</div>
+                    <div class="calendar-cell">
+                        <div class="cell-meal">
+                            <span class="meal-text">${mealsByTime.Breakfast}</span>
+                            <button class="cell-regenerate-btn" data-day="${index}" data-meal="Breakfast" title="Regenerate breakfast" type="button">
+                                <i class="fas fa-sync"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-meal">
+                            <span class="meal-text">${mealsByTime.Lunch}</span>
+                            <button class="cell-regenerate-btn" data-day="${index}" data-meal="Lunch" title="Regenerate lunch" type="button">
+                                <i class="fas fa-sync"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-meal">
+                            <span class="meal-text">${mealsByTime.Dinner}</span>
+                            <button class="cell-regenerate-btn" data-day="${index}" data-meal="Dinner" title="Regenerate dinner" type="button">
+                                <i class="fas fa-sync"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             `;
         }).join('');
@@ -409,6 +446,51 @@ class FoodMenuApp {
                 ${rows}
             </div>
         `;
+
+        // Attach click handlers for per-meal regeneration via event delegation
+        this.weeklyMenuContainer.removeEventListener('click', this._onCellRegenClick);
+        this._onCellRegenClick = (e) => {
+            const btn = e.target.closest('.cell-regenerate-btn');
+            if (!btn) return;
+            const dayIdx = parseInt(btn.dataset.day, 10);
+            const mealTime = btn.dataset.meal;
+            this.regenerateSingleMeal(dayIdx, mealTime);
+        };
+        this.weeklyMenuContainer.addEventListener('click', this._onCellRegenClick);
+    }
+
+    regenerateSingleMeal(dayIndex, mealTime) {
+        if (!this.weeklyMenu[dayIndex]) return;
+
+        let newMealText = '';
+        if (mealTime === 'Breakfast') {
+            const breakfastItems = this.getRandomItems(this.userFoods.breakfast, 1);
+            const fruitItems = this.getRandomItems(this.userFoods.fruits, 1);
+            newMealText = [...breakfastItems, ...fruitItems].join(', ');
+        } else {
+            const parts = [
+                ...this.getRandomItems(this.userFoods.dal, 1),
+                ...this.getRandomItems(this.userFoods.vegetables, 1),
+                ...this.getRandomItems(this.userFoods.fruits, 1),
+                'Roti/Rice'
+            ];
+            newMealText = parts.join(', ');
+        }
+
+        const meals = this.weeklyMenu[dayIndex].meals.map(m =>
+            m.time === mealTime ? { ...m, food: newMealText } : m
+        );
+        this.weeklyMenu[dayIndex] = { ...this.weeklyMenu[dayIndex], meals };
+
+        // Persist and re-render views
+        this.saveUserData();
+        this.renderWeeklyMenu();
+        if (!this.weeklyMenuEl.classList.contains('hidden')) {
+            // weekly visible already updated
+        } else {
+            // update daily view if currently viewing this day
+            if (this.currentDailyIndex === dayIndex) this.renderDailyView(dayIndex);
+        }
     }
 
     showAddFoodModal(category = null) {

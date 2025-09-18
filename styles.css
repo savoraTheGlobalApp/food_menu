@@ -1588,6 +1588,13 @@ body {
     padding: 14px;
 }
 
+.meal-name-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 .swipe-hint {
     text-align: center;
     color: #6b7280;
@@ -1640,6 +1647,29 @@ body {
     border-left: 1px solid #eef2f7;
 }
 
+.cell-meal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cell-regenerate-btn {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+    border-radius: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell-regenerate-btn:hover {
+    background: #e9ecef;
+}
+
 .calendar-header .calendar-cell {
     background: #f8fafc;
     font-weight: 600;
@@ -1672,6 +1702,8 @@ body {
     .calendar-row:not(.calendar-header) { margin-bottom: 12px; }
     .calendar-row:not(.calendar-header) .calendar-cell { border-top: 1px solid #eef2f7; }
     .calendar-row:not(.calendar-header) .calendar-cell.day { border-top: none; background: #f8fafc; }
+    .cell-meal { gap: 8px; }
+    .cell-regenerate-btn { padding: 6px 8px; }
 }
 
 .day-card {
